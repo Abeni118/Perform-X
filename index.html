@@ -1,97 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PerformX Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerformX · performance dashboard</title>
+  <!-- external CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="app">
-
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <div class="logo">PerformX</div>
-    <nav>
-      <a class="active">Dashboard</a>
-      <a>Tasks</a>
-      <a>Reports</a>
-      <a>Team</a>
-      <a>Logout</a>
-    </nav>
-  </aside>
-
-  <!-- Main -->
-  <div class="main">
-
-    <!-- Top Navbar -->
-    <header class="topbar">
-      <button class="menu-btn" id="menuBtn">☰</button>
-      <h1>Dashboard</h1>
-      <div class="profile">
-        <span>Abenezer</span>
+  <div class="app-wrapper">
+    <!-- fixed left sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">PerformX</div>
+        <button class="collapse-btn" id="collapseBtn" aria-label="collapse sidebar">◀</button>
       </div>
-    </header>
-
-    <!-- Content -->
-    <section class="content">
-
-      <!-- KPI Cards -->
-      <div class="cards">
-        <div class="card">
-          <h3>Today's Tasks</h3>
-          <p class="number">12</p>
-        </div>
-        <div class="card">
-          <h3>Completed</h3>
-          <p class="number success">8</p>
-        </div>
-        <div class="card">
-          <h3>Success %</h3>
-          <p class="number">67%</p>
-        </div>
-        <div class="card">
-          <h3>Performance Score</h3>
-          <p class="number primary">82</p>
-        </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item active"><a href="#"><span class="nav-icon">📊</span><span class="nav-text">Dashboard</span></a></li>
+          <li class="nav-item"><a href="#"><span class="nav-icon">✅</span><span class="nav-text">Tasks</span></a></li>
+          <li class="nav-item"><a href="#"><span class="nav-icon">📈</span><span class="nav-text">Reports</span></a></li>
+          <li class="nav-item"><a href="#"><span class="nav-icon">👥</span><span class="nav-text">Team</span></a></li>
+          <li class="nav-item"><a href="#"><span class="nav-icon">⚙️</span><span class="nav-text">Settings</span></a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="nav-item"><a href="#"><span class="nav-icon">🚪</span><span class="nav-text">Logout</span></a></div>
       </div>
+    </aside>
 
-      <!-- Charts -->
-      <div class="charts">
-        <div class="card chart">
-          <h3>Weekly Productivity</h3>
-          <div class="chart-placeholder"></div>
+    <!-- main content area (right of sidebar) -->
+    <main class="main-content" id="mainContent">
+      <!-- top navbar -->
+      <header class="top-nav">
+        <div class="page-title">
+          <h1>Dashboard</h1>
         </div>
-        <div class="card chart">
-          <h3>Monthly Performance</h3>
-          <div class="chart-placeholder"></div>
+        <div class="nav-actions">
+          <div class="search-box">
+            <input type="text" placeholder="Search...">
+          </div>
+          <button class="icon-btn">🔔</button>
+          <div class="user-dropdown">
+            <button class="user-btn">Alex <span>▼</span></button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      <!-- Bottom Section -->
-      <div class="bottom">
-        <div class="card">
-          <h3>Smart Suggestions</h3>
-          <ul class="suggestions">
-            <li class="success">Great improvement this week!</li>
-            <li class="warning">You delay tasks in the evening.</li>
-          </ul>
+      <!-- dynamic dashboard grid -->
+      <div class="dashboard-container">
+        <!-- row 1: 4 KPI cards -->
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="card-header">
+              <span class="card-title">Performance Score</span>
+              <span class="card-icon">📊</span>
+            </div>
+            <div class="card-value">94.2</div>
+            <div class="card-trend positive">+5.4%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="card-header">
+              <span class="card-title">Success Percentage</span>
+              <span class="card-icon">✅</span>
+            </div>
+            <div class="card-value">88%</div>
+            <div class="card-trend positive">+2.1%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="card-header">
+              <span class="card-title">Active Streak</span>
+              <span class="card-icon">🔥</span>
+            </div>
+            <div class="card-value">12 days</div>
+            <div class="card-trend neutral">new record</div>
+          </div>
+          <div class="kpi-card">
+            <div class="card-header">
+              <span class="card-title">Avg. Completion</span>
+              <span class="card-icon">⏱️</span>
+            </div>
+            <div class="card-value">4.2 hrs</div>
+            <div class="card-trend positive">-0.3hr</div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Recent Activity</h3>
-          <ul class="activity">
-            <li>Completed UI Design Task</li>
-            <li>Added 3 new tasks</li>
-          </ul>
+        <!-- row 2: charts + activity (two column) -->
+        <div class="charts-row">
+          <div class="chart-card large">
+            <h3>Weekly Performance</h3>
+            <div class="chart-placeholder bar-chart"></div>
+            <div class="chart-footer">Activity breakdown for current week</div>
+          </div>
+          <div class="chart-card small">
+            <h3>Activity Streak</h3>
+            <div class="streak-metrics">
+              <div><strong>12</strong> <span>days current</span></div>
+              <div><strong>28</strong> <span>days longest</span></div>
+              <div><strong>84%</strong> <span>consistency</span></div>
+            </div>
+            <div class="streak-message">Keep it up, Alex! You're in the top 5% this month.</div>
+          </div>
         </div>
-      </div>
 
-    </section>
+        <!-- row 3: AI suggestion + quick stats / recent -->
+        <div class="insights-row">
+          <div class="insight-card ai-tip">
+            <h3>AI Performance Tip</h3>
+            <p>You're most productive between 9:00 AM and 11:30 AM. We suggest scheduling high-priority "Deep Work" tasks during this window to increase success by an estimated 14%.</p>
+            <a href="#">View detailed breakdown →</a>
+          </div>
+          <div class="insight-card quick-stats">
+            <h3>Quick Stats</h3>
+            <ul>
+              <li><span>Total Focus Time</span> <strong>142h</strong></li>
+              <li><span>Meetings Attended</span> <strong>24</strong></li>
+              <li><span>Tasks Overdue</span> <strong>0</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- footer note / copy -->
+        <div class="dashboard-footer">
+          <p>© 2024 PerformX Productivity. All rights reserved. <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Support</a></p>
+        </div>
+      </div> <!-- end dashboard container -->
+    </main>
   </div>
-</div>
 
-<script src="script.js"></script>
+  <!-- external javascript -->
+  <script src="script.js"></script>
 </body>
 </html>
