@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="logo">PerformX</div>
+    <nav>
+      <a class="active">Dashboard</a>
+      <a>Tasks</a>
+      <a>Reports</a>
+      <a>Team</a>
+      <a>Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- Top Navbar -->
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <h1>Dashboard</h1>
+      <div class="profile">
+        <span>Abenezer</span>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <section class="content">
+
+      <!-- KPI Cards -->
+      <div class="cards">
+        <div class="card">
+          <h3>Today's Tasks</h3>
+          <p class="number">12</p>
+        </div>
+        <div class="card">
+          <h3>Completed</h3>
+          <p class="number success">8</p>
+        </div>
+        <div class="card">
+          <h3>Success %</h3>
+          <p class="number">67%</p>
+        </div>
+        <div class="card">
+          <h3>Performance Score</h3>
+          <p class="number primary">82</p>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts">
+        <div class="card chart">
+          <h3>Weekly Productivity</h3>
+          <div class="chart-placeholder"></div>
+        </div>
+        <div class="card chart">
+          <h3>Monthly Performance</h3>
+          <div class="chart-placeholder"></div>
+        </div>
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="bottom">
+        <div class="card">
+          <h3>Smart Suggestions</h3>
+          <ul class="suggestions">
+            <li class="success">Great improvement this week!</li>
+            <li class="warning">You delay tasks in the evening.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Recent Activity</h3>
+          <ul class="activity">
+            <li>Completed UI Design Task</li>
+            <li>Added 3 new tasks</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
