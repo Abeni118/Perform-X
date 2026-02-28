@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PerformX — Login</title>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page" aria-labelledby="login-heading">
+    <section class="auth-card" role="region" aria-label="Login to PerformX">
+      <div class="brand" aria-hidden="false">
+        <div class="brand__logo" aria-hidden="true">PX</div>
+        <div>
+          <div class="brand__title">PerformX</div>
+          <div class="brand__subtitle">Productivity & Performance</div>
+        </div>
+      </div>
+
+      <h1 id="login-heading" class="heading">Sign in to your account</h1>
+      <p class="muted" style="margin:0 0 18px;">Secure access to the PerformX admin panel or workspace.</p>
+
+      <form id="login-form" autocomplete="on" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required />
+        </div>
+
+        <div class="field pw-wrap">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required />
+          <button type="button" class="pw-toggle" aria-label="Toggle password visibility" title="Show password" id="togglePw">Show</button>
+        </div>
+
+        <div class="actions" style="margin-top:6px;">
+          <label class="remember">
+            <input type="checkbox" name="remember" aria-label="Remember me" />
+            <span>Remember me</span>
+          </label>
+
+          <a class="btn-link" href="#" aria-label="Forgot password">Forgot password?</a>
+        </div>
+
+        <div style="margin-top:18px;">
+          <button type="submit" class="btn btn-primary" style="width:100%;">Sign in</button>
+        </div>
+      </form>
+
+      <div class="footer-note">
+        Don't have an account?
+        <a href="register.html" class="create-link">Create account</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Simple client-side enhancements
+    (function(){
+      const pw = document.getElementById('password');
+      const toggle = document.getElementById('togglePw');
+
+      toggle.addEventListener('click', () => {
+        const isPassword = pw.type === 'password';
+        pw.type = isPassword ? 'text' : 'password';
+        toggle.textContent = isPassword ? 'Hide' : 'Show';
+        toggle.title = isPassword ? 'Hide password' : 'Show password';
+      });
+
+      // Basic form submit handler (demo only)
+      document.getElementById('login-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        const email = document.getElementById('email').value.trim();
+        const password = pw.value.trim();
+        if(!email || !password){
+          alert('Please enter your email and password.');
+          return;
+        }
+        alert('Signing in...');
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,134 +1,170 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PerformX · performance dashboard</title>
-  <!-- external CSS -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PerformX — Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-wrapper">
-    <!-- fixed left sidebar -->
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <div class="logo">PerformX</div>
-        <button class="collapse-btn" id="collapseBtn" aria-label="collapse sidebar">◀</button>
+  <div class="app" role="application" aria-label="PerformX dashboard">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="sidebar__brand">
+        <div class="logo" aria-hidden="true">PX</div>
+        <div class="title">PerformX</div>
       </div>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item active"><a href="#"><span class="nav-icon">📊</span><span class="nav-text">Dashboard</span></a></li>
-          <li class="nav-item"><a href="#"><span class="nav-icon">✅</span><span class="nav-text">Tasks</span></a></li>
-          <li class="nav-item"><a href="#"><span class="nav-icon">📈</span><span class="nav-text">Reports</span></a></li>
-          <li class="nav-item"><a href="#"><span class="nav-icon">👥</span><span class="nav-text">Team</span></a></li>
-          <li class="nav-item"><a href="#"><span class="nav-icon">⚙️</span><span class="nav-text">Settings</span></a></li>
-        </ul>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__item active" href="#"><span class="icon" aria-hidden="true">🏠</span><span>Dashboard</span></a>
+        <a class="nav__item" href="#"><span class="icon" aria-hidden="true">🗂️</span><span>Tasks</span></a>
+        <a class="nav__item" href="#"><span class="icon" aria-hidden="true">📊</span><span>Reports</span></a>
+        <a class="nav__item" href="#"><span class="icon" aria-hidden="true">👥</span><span>Team</span></a>
+        <a class="nav__item" href="#"><span class="icon" aria-hidden="true">🔒</span><span>Admin</span></a>
+        <a class="nav__item" href="#"><span class="icon" aria-hidden="true">↩️</span><span>Logout</span></a>
       </nav>
-      <div class="sidebar-footer">
-        <div class="nav-item"><a href="#"><span class="nav-icon">🚪</span><span class="nav-text">Logout</span></a></div>
+
+      <div class="sidebar__footer">
+        <button class="btn-ghost" aria-label="Help">Help</button>
       </div>
     </aside>
 
-    <!-- main content area (right of sidebar) -->
-    <main class="main-content" id="mainContent">
-      <!-- top navbar -->
-      <header class="top-nav">
-        <div class="page-title">
-          <h1>Dashboard</h1>
+    <div class="main">
+      <header class="topbar" role="banner">
+        <div class="search" role="search">
+          <input type="search" placeholder="Search..." aria-label="Search" />
         </div>
-        <div class="nav-actions">
-          <div class="search-box">
-            <input type="text" placeholder="Search...">
-          </div>
-          <button class="icon-btn">🔔</button>
-          <div class="user-dropdown">
-            <button class="user-btn">Alex <span>▼</span></button>
+        <div class="topbar__right">
+          <button class="icon-btn" aria-label="Notifications">🔔</button>
+          <div class="profile" role="group" aria-label="User profile">
+            <div class="avatar" aria-hidden="true">JD</div>
+            <div class="profile__name">Jordan Doe</div>
+            <button class="chev" aria-label="Open profile menu">▾</button>
           </div>
         </div>
       </header>
 
-      <!-- dynamic dashboard grid -->
-      <div class="dashboard-container">
-        <!-- row 1: 4 KPI cards -->
-        <div class="kpi-row">
-          <div class="kpi-card">
-            <div class="card-header">
-              <span class="card-title">Performance Score</span>
-              <span class="card-icon">📊</span>
-            </div>
-            <div class="card-value">94.2</div>
-            <div class="card-trend positive">+5.4%</div>
-          </div>
-          <div class="kpi-card">
-            <div class="card-header">
-              <span class="card-title">Success Percentage</span>
-              <span class="card-icon">✅</span>
-            </div>
-            <div class="card-value">88%</div>
-            <div class="card-trend positive">+2.1%</div>
-          </div>
-          <div class="kpi-card">
-            <div class="card-header">
-              <span class="card-title">Active Streak</span>
-              <span class="card-icon">🔥</span>
-            </div>
-            <div class="card-value">12 days</div>
-            <div class="card-trend neutral">new record</div>
-          </div>
-          <div class="kpi-card">
-            <div class="card-header">
-              <span class="card-title">Avg. Completion</span>
-              <span class="card-icon">⏱️</span>
-            </div>
-            <div class="card-value">4.2 hrs</div>
-            <div class="card-trend positive">-0.3hr</div>
-          </div>
-        </div>
+      <main class="content" role="main" aria-live="polite">
+        <!-- Top stats -->
+        <section class="stats-row" aria-label="Key metrics">
+          <article class="stat-card" aria-hidden="false">
+            <div class="stat-card__label">Today's Tasks</div>
+            <div class="stat-card__value">24</div>
+            <div class="stat-card__meta">Due today</div>
+          </article>
 
-        <!-- row 2: charts + activity (two column) -->
-        <div class="charts-row">
-          <div class="chart-card large">
-            <h3>Weekly Performance</h3>
-            <div class="chart-placeholder bar-chart"></div>
-            <div class="chart-footer">Activity breakdown for current week</div>
-          </div>
-          <div class="chart-card small">
-            <h3>Activity Streak</h3>
-            <div class="streak-metrics">
-              <div><strong>12</strong> <span>days current</span></div>
-              <div><strong>28</strong> <span>days longest</span></div>
-              <div><strong>84%</strong> <span>consistency</span></div>
-            </div>
-            <div class="streak-message">Keep it up, Alex! You're in the top 5% this month.</div>
-          </div>
-        </div>
+          <article class="stat-card">
+            <div class="stat-card__label">Completed Tasks</div>
+            <div class="stat-card__value">18</div>
+            <div class="stat-card__meta">This week</div>
+          </article>
 
-        <!-- row 3: AI suggestion + quick stats / recent -->
-        <div class="insights-row">
-          <div class="insight-card ai-tip">
-            <h3>AI Performance Tip</h3>
-            <p>You're most productive between 9:00 AM and 11:30 AM. We suggest scheduling high-priority "Deep Work" tasks during this window to increase success by an estimated 14%.</p>
-            <a href="#">View detailed breakdown →</a>
+          <article class="stat-card">
+            <div class="stat-card__label">Success Percentage</div>
+            <div class="stat-card__value">92%</div>
+            <div class="stat-card__meta">Monthly avg</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card__label">Performance Score</div>
+            <div class="stat-card__value">87</div>
+            <div class="stat-card__meta">Out of 100</div>
+          </article>
+        </section>
+
+        <!-- Charts -->
+        <section class="charts-row" aria-label="Charts">
+          <div class="chart-card" role="region" aria-label="Weekly productivity chart">
+            <div class="card-header">
+              <h3>Weekly Productivity</h3>
+              <div class="card-actions">Last 7 days</div>
+            </div>
+            <div class="chart-placeholder" aria-hidden="true">[Line chart]</div>
           </div>
-          <div class="insight-card quick-stats">
-            <h3>Quick Stats</h3>
-            <ul>
-              <li><span>Total Focus Time</span> <strong>142h</strong></li>
-              <li><span>Meetings Attended</span> <strong>24</strong></li>
-              <li><span>Tasks Overdue</span> <strong>0</strong></li>
+
+          <div class="chart-card" role="region" aria-label="Monthly productivity chart">
+            <div class="card-header">
+              <h3>Monthly Productivity</h3>
+              <div class="card-actions">Last 30 days</div>
+            </div>
+            <div class="chart-placeholder" aria-hidden="true">[Bar chart]</div>
+          </div>
+        </section>
+
+        <!-- Bottom panels -->
+        <section class="bottom-row" aria-label="Insights and activity">
+          <div class="suggestions-card" role="region" aria-label="Smart suggestions">
+            <div class="card-header">
+              <h3>Smart Suggestions</h3>
+              <div class="card-actions">AI</div>
+            </div>
+
+            <ul class="suggestions">
+              <li class="suggestion success">
+                <div class="s-icon" aria-hidden="true">✅</div>
+                <div class="s-body">
+                  <div class="s-title">Optimize daily standups</div>
+                  <div class="s-text">Shorten meetings to 15 minutes to boost focus.</div>
+                </div>
+              </li>
+
+              <li class="suggestion warning">
+                <div class="s-icon" aria-hidden="true">⚠️</div>
+                <div class="s-body">
+                  <div class="s-title">Address overdue tasks</div>
+                  <div class="s-text">3 tasks overdue—consider reassigning priorities.</div>
+                </div>
+              </li>
+
+              <li class="suggestion info">
+                <div class="s-icon" aria-hidden="true">💡</div>
+                <div class="s-body">
+                  <div class="s-title">Encourage peer reviews</div>
+                  <div class="s-text">Peer reviews can improve success rates by 6%.</div>
+                </div>
+              </li>
             </ul>
           </div>
-        </div>
 
-        <!-- footer note / copy -->
-        <div class="dashboard-footer">
-          <p>© 2024 PerformX Productivity. All rights reserved. <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Support</a></p>
-        </div>
-      </div> <!-- end dashboard container -->
-    </main>
+          <div class="activity-card" role="region" aria-label="Recent activity">
+            <div class="card-header">
+              <h3>Recent Activity</h3>
+              <div class="card-actions">Timeline</div>
+            </div>
+
+            <ul class="activity-list">
+              <li>
+                <div class="act-left" aria-hidden="true">👤</div>
+                <div class="act-mid">
+                  <div class="act-title">Team A completed sprint planning</div>
+                  <div class="act-meta">2 hours ago</div>
+                </div>
+                <div class="act-right">View</div>
+              </li>
+
+              <li>
+                <div class="act-left" aria-hidden="true">🛠️</div>
+                <div class="act-mid">
+                  <div class="act-title">System maintenance completed</div>
+                  <div class="act-meta">1 day ago</div>
+                </div>
+                <div class="act-right">Details</div>
+              </li>
+
+              <li>
+                <div class="act-left" aria-hidden="true">📈</div>
+                <div class="act-mid">
+                  <div class="act-title">Monthly report ready</div>
+                  <div class="act-meta">3 days ago</div>
+                </div>
+                <div class="act-right">Open</div>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
   </div>
-
-  <!-- external javascript -->
-  <script src="script.js"></script>
 </body>
-</html>
+</html
