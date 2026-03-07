@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PerformX — Team Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="team.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon"><i class='bx bx-pulse'></i></div>
+                <span class="brand-name">PerformX</span>
+            </a>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">
+                <i class='bx bx-grid-alt'></i> Dashboard
+            </a>
+            <a href="task.html" class="nav-item">
+                <i class='bx bx-check-square'></i> Tasks
+            </a>
+            <a href="report.html" class="nav-item">
+                <i class='bx bx-bar-chart-alt-2'></i> Reports
+            </a>
+            <a href="team.html" class="nav-item active">
+                <i class='bx bx-user-circle'></i> Team
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#" class="nav-item">
+                <i class='bx bx-cog'></i> Settings
+            </a>
+            <a href="login.html" class="nav-item nav-item-danger">
+                <i class='bx bx-log-out'></i> Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="search-bar">
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search performance...">
+            </div>
+
+            <div class="topbar-right">
+                <button class="icon-action">
+                    <i class='bx bx-bell'></i>
+                    <span class="badge-dot"></span>
+                </button>
+                <button class="icon-action">
+                    <i class='bx bx-moon'></i>
+                </button>
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">Alex Rivera</span>
+                        <span class="user-role">Project Manager</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Alex+Rivera&background=0D8ABC&color=fff&rounded=true"
+                        alt="Alex Rivera" class="user-avatar" width="36" height="36">
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-wrapper">
+
+            <!-- Header -->
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>Team Performance Dashboard</h1>
+                    <p>Manage your workforce, monitor departmental KPIs, and streamline operations.</p>
+                </div>
+
+                <div class="header-actions">
+                    <button class="btn">
+                        Last 30 Days
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class='bx bx-user-plus'></i> Invite Member
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top KPI Grid -->
+            <div class="kpi-grid">
+
+                <div class="kpi-card">
+                    <div class="kpi-top">
+                        <div class="kpi-icon icon-blue-light"><i class='bx bx-line-chart'></i></div>
+                        <div class="kpi-trend trend-green"><i class='bx bx-up-arrow-alt'></i> +2.5%</div>
+                    </div>
+                    <div class="kpi-label">Team Efficiency</div>
+                    <div class="kpi-value">94.2%</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-top">
+                        <div class="kpi-icon icon-green-light"><i class='bx bx-check-shield'></i></div>
+                        <div class="kpi-trend trend-green"><i class='bx bx-up-arrow-alt'></i> +12%</div>
+                    </div>
+                    <div class="kpi-label">Tasks Completed</div>
+                    <div class="kpi-value">1,284</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-top">
+                        <div class="kpi-icon icon-orange-light"><i class='bx bx-time-five'></i></div>
+                        <div class="kpi-trend trend-red"><i class='bx bx-down-arrow-alt'></i> -0.4%</div>
+                    </div>
+                    <div class="kpi-label">Average Velocity</div>
+                    <div class="kpi-value">4.8/d</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-top">
+                        <div class="kpi-icon icon-blue-light"><i class='bx bx-briefcase'></i></div>
+                        <div class="kpi-trend trend-green"><i class='bx bx-up-arrow-alt'></i> +1</div>
+                    </div>
+                    <div class="kpi-label">Active Projects</div>
+                    <div class="kpi-value">12</div>
+                </div>
+
+            </div>
+
+            <!-- Bar Chart Section -->
+            <div class="chart-card">
+                <div class="card-title-row">
+                    <div>
+                        <h3>Employee Performance Score Comparison</h3>
+                        <p>Visual benchmarking of individual contribution scores for the current period.</p>
+                    </div>
+                    <button class="btn btn-sm">Export Report</button>
+                </div>
+                <div class="chart-container-large">
+                    <canvas id="teamScoreChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Team Directory Table Section -->
+            <div class="chart-card directory-section">
+                <div class="card-title-row">
+                    <div>
+                        <h3>Team Directory & Performance</h3>
+                        <p>Manage individual workloads and monitor real-time completion metrics.</p>
+                    </div>
+                    <div class="directory-actions">
+                        <button class="btn btn-sm">Filter</button>
+                        <button class="btn btn-primary btn-sm"><i class='bx bx-plus-circle'></i> Assign New
+                            Task</button>
+                    </div>
+                </div>
+
+                <table class="team-table">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th style="text-align: center;">Total Tasks</th>
+                            <th style="text-align: center;">Completed</th>
+                            <th style="width: 25%;">Success Rate</th>
+                            <th style="text-align: center;">Perf. Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <div class="emp-cell">
+                                    <div class="emp-avatar-container">
+                                        <img src="https://ui-avatars.com/api/?name=Sarah+Jenkins&background=E0E7FF&color=4F46E5&rounded=true"
+                                            alt="Sarah" class="emp-avatar">
+                                        <span class="emp-status status-online"></span>
+                                    </div>
+                                    <div class="emp-info">
+                                        <div class="emp-name">Sarah Jenkins</div>
+                                        <div class="emp-role">Senior Designer</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center; color: var(--text-main); font-weight: 500;">42</td>
+                            <td style="text-align: center; color: var(--green); font-weight: 600;">38</td>
+                            <td>
+                                <div class="rate-wrapper">
+                                    <div class="rate-labels">
+                                        <span class="rate-lbl">RATE</span>
+                                        <span class="rate-val">90%</span>
+                                    </div>
+                                    <div class="rate-bar-bg">
+                                        <div class="rate-bar-fill" style="width: 90%; background: #4F46E5;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                <span class="score-badge bg-green-light text-green">94</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="emp-cell">
+                                    <div class="emp-avatar-container">
+                                        <img src="https://ui-avatars.com/api/?name=Michael+Chen&background=DBEAFE&color=2563EB&rounded=true"
+                                            alt="Michael" class="emp-avatar">
+                                        <span class="emp-status status-busy"></span>
+                                    </div>
+                                    <div class="emp-info">
+                                        <div class="emp-name">Michael Chen</div>
+                                        <div class="emp-role">Frontend Dev</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center; color: var(--text-main); font-weight: 500;">35</td>
+                            <td style="text-align: center; color: var(--green); font-weight: 600;">32</td>
+                            <td>
+                                <div class="rate-wrapper">
+                                    <div class="rate-labels">
+                                        <span class="rate-lbl">RATE</span>
+                                        <span class="rate-val">91%</span>
+                                    </div>
+                                    <div class="rate-bar-bg">
+                                        <div class="rate-bar-fill" style="width: 91%; background: #10B981;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                <span class="score-badge bg-gray-light text-gray">89</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="emp-cell">
+                                    <div class="emp-avatar-container">
+                                        <img src="https://ui-avatars.com/api/?name=Elena+Rodriguez&background=FFEDD5&color=C2410C&rounded=true"
+                                            alt="Elena" class="emp-avatar">
+                                        <span class="emp-status status-online"></span>
+                                    </div>
+                                    <div class="emp-info">
+                                        <div class="emp-name">Elena Rodriguez</div>
+                                        <div class="emp-role">Product Manager</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center; color: var(--text-main); font-weight: 500;">50</td>
+                            <td style="text-align: center; color: var(--green); font-weight: 600;">48</td>
+                            <td>
+                                <div class="rate-wrapper">
+                                    <div class="rate-labels">
+                                        <span class="rate-lbl">RATE</span>
+                                        <span class="rate-val">96%</span>
+                                    </div>
+                                    <div class="rate-bar-bg">
+                                        <div class="rate-bar-fill" style="width: 96%; background: #10B981;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                <span class="score-badge bg-green-light text-green">97</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="emp-cell">
+                                    <div class="emp-avatar-container">
+                                        <img src="https://ui-avatars.com/api/?name=David+Kim&background=FCE7F3&color=BE185D&rounded=true"
+                                            alt="David" class="emp-avatar">
+                                        <span class="emp-status status-offline"></span>
+                                    </div>
+                                    <div class="emp-info">
+                                        <div class="emp-name">David Kim</div>
+                                        <div class="emp-role">Backend Engineer</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center; color: var(--text-main); font-weight: 500;">28</td>
+                            <td style="text-align: center; color: var(--green); font-weight: 600;">20</td>
+                            <td>
+                                <div class="rate-wrapper">
+                                    <div class="rate-labels">
+                                        <span class="rate-lbl">RATE</span>
+                                        <span class="rate-val">71%</span>
+                                    </div>
+                                    <div class="rate-bar-bg">
+                                        <div class="rate-bar-fill" style="width: 71%; background: #F59E0B;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                <span class="score-badge bg-gray-light text-gray">82</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="emp-cell">
+                                    <div class="emp-avatar-container">
+                                        <img src="https://ui-avatars.com/api/?name=Sofia+Muller&background=E0E7FF&color=4338CA&rounded=true"
+                                            alt="Sofia" class="emp-avatar">
+                                        <span class="emp-status status-offline"></span>
+                                    </div>
+                                    <div class="emp-info">
+                                        <div class="emp-name">Sofia Müller</div>
+                                        <div class="emp-role">QA Analyst</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center; color: var(--text-main); font-weight: 500;">62</td>
+                            <td style="text-align: center; color: var(--green); font-weight: 600;">60</td>
+                            <td>
+                                <div class="rate-wrapper">
+                                    <div class="rate-labels">
+                                        <span class="rate-lbl">RATE</span>
+                                        <span class="rate-val">97%</span>
+                                    </div>
+                                    <div class="rate-bar-bg">
+                                        <div class="rate-bar-fill" style="width: 97%; background: #10B981;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                <span class="score-badge bg-green-light text-green">91</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="emp-cell">
+                                    <div class="emp-avatar-container">
+                                        <img src="https://ui-avatars.com/api/?name=James+Wilson&background=F3F4F6&color=374151&rounded=true"
+                                            alt="James" class="emp-avatar">
+                                        <span class="emp-status status-online"></span>
+                                    </div>
+                                    <div class="emp-info">
+                                        <div class="emp-name">James Wilson</div>
+                                        <div class="emp-role">UX Researcher</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center; color: var(--text-main); font-weight: 500;">31</td>
+                            <td style="text-align: center; color: var(--green); font-weight: 600;">25</td>
+                            <td>
+                                <div class="rate-wrapper">
+                                    <div class="rate-labels">
+                                        <span class="rate-lbl">RATE</span>
+                                        <span class="rate-val">80%</span>
+                                    </div>
+                                    <div class="rate-bar-bg">
+                                        <div class="rate-bar-fill" style="width: 80%; background: #4F46E5;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                <span class="score-badge bg-gray-light text-gray">85</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div>&copy; 2024 PerformX Productivity. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Support</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Bar Chart for Employee Score Comparison
+            const teamScoreCtx = document.getElementById('teamScoreChart');
+            if (teamScoreCtx) {
+                new Chart(teamScoreCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Sarah', 'Michael', 'Elena', 'David', 'Sofia', 'James'],
+                        datasets: [{
+                            label: 'Performance Score',
+                            data: [94, 89, 97, 82, 91, 85],
+                            backgroundColor: '#6366F1', // Indigo bar color
+                            borderRadius: 4,
+                            barPercentage: 0.6,
+                            categoryPercentage: 0.8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#111827',
+                                padding: 10,
+                                titleFont: { family: 'Inter', size: 12 },
+                                bodyFont: { family: 'Inter', size: 13, weight: 'bold' },
+                                displayColors: false,
+                                cornerRadius: 8,
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 25,
+                                    font: { family: 'Inter', size: 11 },
+                                    color: '#9CA3AF'
+                                },
+                                grid: {
+                                    color: '#F3F4F6',
+                                    drawBorder: false,
+                                    borderDash: [5, 5]
+                                }
+                            },
+                            x: {
+                                grid: { display: false, drawBorder: false },
+                                ticks: {
+                                    font: { family: 'Inter', size: 11 },
+                                    color: '#6B7280'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
