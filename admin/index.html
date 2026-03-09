@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PerformX — Admin Portal</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <a href="../index.html" class="admin-brand">
+            <div class="admin-logo-icon"><i class='bx bx-pulse'></i></div>
+            <span class="admin-brand-name">PerformX</span>
+        </a>
+
+        <nav class="admin-nav">
+            <a href="#" class="admin-nav-item active">
+                <i class='bx bx-grid-alt'></i> Overview
+            </a>
+            <a href="#" class="admin-nav-item">
+                <i class='bx bx-user'></i> User Management
+            </a>
+            <a href="#" class="admin-nav-item">
+                <i class='bx bx-check-shield'></i> Compliance Vault
+            </a>
+            <a href="#" class="admin-nav-item">
+                <i class='bx bx-trending-up'></i> System Logs
+            </a>
+            <a href="#" class="admin-nav-item">
+                <i class='bx bx-cog'></i> Settings
+            </a>
+        </nav>
+
+        <div class="admin-sidebar-footer">
+            <div class="privacy-mode-alert">
+                <div class="privacy-mode-title">
+                    <i class='bx bx-lock-alt'></i> Privacy Mode Active
+                </div>
+                <div class="privacy-mode-text">
+                    Admin access is restricted to metadata only. Individual task data remains encrypted.
+                </div>
+            </div>
+            <a href="../auth/login.html" class="sign-out-btn">
+                <i class='bx bx-log-out-circle'></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main View -->
+    <main class="admin-main">
+
+        <!-- Top Header -->
+        <header class="admin-topbar">
+            <div class="search-box">
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search users or system reports...">
+            </div>
+
+            <div class="topbar-actions">
+                <span class="system-status">System Secure</span>
+                <div class="notification-bell">
+                    <i class='bx bx-bell'></i>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="admin-profile-text">
+                        <span class="admin-profile-name">Admin Portal</span>
+                        <span class="admin-profile-role">Enterprise Access</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=111827&color=fff&rounded=true"
+                        alt="Admin" class="admin-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="admin-page-content">
+
+            <!-- Breadcrumbs & Meta -->
+            <div class="breadcrumbs">
+                Admin Dashboard <i class='bx bx-chevron-right'></i> <span>PerformX Governance</span>
+            </div>
+
+            <div class="page-header-row">
+                <h1 class="page-title">User Overview & Compliance</h1>
+                <div class="header-buttons">
+                    <button class="btn"><i class='bx bx-info-circle'></i> Policy Updates</button>
+                    <button class="btn btn-primary"><i class='bx bx-bar-chart-alt-2'></i> Generate Report</button>
+                </div>
+            </div>
+
+            <!-- KPI Grid -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-blue"><i class='bx bx-user'></i></div>
+                        <div class="kpi-trend trend-pos">+12%</div>
+                    </div>
+                    <div class="kpi-label">Total Users</div>
+                    <div class="kpi-value">1,284</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-blue"><i class='bx bx-pulse'></i></div>
+                        <div class="kpi-trend trend-pos">+5.2%</div>
+                    </div>
+                    <div class="kpi-label">Active Users</div>
+                    <div class="kpi-value">1,042</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-blue"><i class='bx bx-shield-quarter'></i></div>
+                        <div class="kpi-trend trend-neg">-1.4%</div>
+                    </div>
+                    <div class="kpi-label">Avg. System Performance</div>
+                    <div class="kpi-value">88.4%</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-blue"><i class='bx bx-trending-up'></i></div>
+                        <div class="kpi-trend trend-pos">+3.1%</div>
+                    </div>
+                    <div class="kpi-label">Platform Growth</div>
+                    <div class="kpi-value">+24.8%</div>
+                </div>
+            </div>
+
+            <!-- Governance Table -->
+            <div class="table-section">
+                <div class="table-header">
+                    <div>
+                        <h2 class="table-title">Worker Governance Table</h2>
+                        <p class="table-subtitle">Manage platform access and monitor high-level engagement metrics.</p>
+                    </div>
+                    <div class="table-controls">
+                        <button class="btn btn-sm">Export CSV</button>
+                        <button class="btn btn-sm">Filters</button>
+                    </div>
+                </div>
+
+                <table class="governance-table">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Role</th>
+                            <th>Total Tasks</th>
+                            <th>Completion Rate</th>
+                            <th>Performance Score</th>
+                            <th>Account Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Row 1 -->
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Sarah+Montgomery&background=FCE7F3&color=BE185D"
+                                        class="user-avatar-small" alt="Sarah">
+                                    <div class="user-details">
+                                        <strong>Sarah Montgomery</strong>
+                                        <span>ID: PFX-001</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-badge">Senior Analyst</span></td>
+                            <td class="metric-cell">142</td>
+                            <td>
+                                <div class="progress-cell">
+                                    <span class="progress-val">94%</span>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill" style="width: 94%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="score-indicator">
+                                    92
+                                </div>
+                            </td>
+                            <td><span class="status-badge">Active</span></td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="btn-action-outline">Suspend</button>
+                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Marcus+Chen&background=FEF08A&color=854D0E"
+                                        class="user-avatar-small" alt="Marcus">
+                                    <div class="user-details">
+                                        <strong>Marcus Chen</strong>
+                                        <span>ID: PFX-002</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-badge">DevOps Lead</span></td>
+                            <td class="metric-cell">89</td>
+                            <td>
+                                <div class="progress-cell">
+                                    <span class="progress-val">88%</span>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill" style="width: 88%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="score-indicator">
+                                    <span class="score-dot"></span> 85
+                                </div>
+                            </td>
+                            <td><span class="status-badge">Active</span></td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="btn-action-outline">Suspend</button>
+                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Alena+Volkov&background=E0E7FF&color=4338CA"
+                                        class="user-avatar-small" alt="Alena">
+                                    <div class="user-details">
+                                        <strong>Alena Volkov</strong>
+                                        <span>ID: PFX-003</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-badge">UX Researcher</span></td>
+                            <td class="metric-cell">215</td>
+                            <td>
+                                <div class="progress-cell">
+                                    <span class="progress-val">98%</span>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill" style="width: 98%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="score-indicator">
+                                    96
+                                </div>
+                            </td>
+                            <td><span class="status-badge">Active</span></td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="btn-action-outline">Suspend</button>
+                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 4 -->
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Julian+Barnes&background=D1FAE5&color=047857"
+                                        class="user-avatar-small" alt="Julian">
+                                    <div class="user-details">
+                                        <strong>Julian Barnes</strong>
+                                        <span>ID: PFX-004</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-badge">Project Manager</span></td>
+                            <td class="metric-cell">104</td>
+                            <td>
+                                <div class="progress-cell">
+                                    <span class="progress-val">76%</span>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill" style="width: 76%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="score-indicator">
+                                    72
+                                </div>
+                            </td>
+                            <td><span class="status-badge suspended">Suspended</span></td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="btn-action-filled">Activate</button>
+                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 5 -->
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <img src="https://ui-avatars.com/api/?name=Elena+Rodriguez&background=DBEAFE&color=1D4ED8"
+                                        class="user-avatar-small" alt="Elena">
+                                    <div class="user-details">
+                                        <strong>Elena Rodriguez</strong>
+                                        <span>ID: PFX-005</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="role-badge">Data Scientist</span></td>
+                            <td class="metric-cell">167</td>
+                            <td>
+                                <div class="progress-cell">
+                                    <span class="progress-val">91%</span>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill" style="width: 91%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="score-indicator">
+                                    <span class="score-dot"></span> 89
+                                </div>
+                            </td>
+                            <td><span class="status-badge">Active</span></td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="btn-action-outline">Suspend</button>
+                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <!-- Table Footer -->
+                <div class="table-footer">
+                    <div class="encryption-notice">
+                        <i class='bx bx-shield-plus'></i>
+                        This table is end-to-end encrypted. Personal descriptions are hidden by platform policy.
+                    </div>
+                    <div class="pagination">
+                        <span style="cursor: pointer; font-weight: 500;">Previous</span>
+                        <div class="page-num active">1</div>
+                        <div class="page-num">2</div>
+                        <span style="cursor: pointer; font-weight: 500;">Next</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Engine Footer -->
+            <div class="privacy-engine">
+                <div class="pe-title">
+                    <i class='bx bx-check-shield'></i> PerformX Privacy Engine
+                </div>
+                <p class="pe-body">
+                    PerformX operates under strict data sovereignty principles. Administrative access is limited to
+                    operational metrics only. Individual task content, private journals, and daily focus blocks are
+                    <strong>zero-knowledge encrypted</strong> and never visible to management or IT administrators.
+                </p>
+                <div class="pe-compliance">
+                    <span>Security Audit: 2024-Q3 Passed</span>
+                    <div class="pe-dot"></div>
+                    <span>GDPR / CCPA Compliant</span>
+                    <div class="pe-dot"></div>
+                    <span>SOC2 Certified</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>
