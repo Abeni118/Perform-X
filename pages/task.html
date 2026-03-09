@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PerformX — Tasks</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/task.css">
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo">
+        <div class="logo-icon"><i class='bx bx-pulse'></i></div>
+        <span class="brand-name">PerformX</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">
+        <i class='bx bx-grid-alt'></i> Dashboard
+      </a>
+      <a href="task.html" class="nav-item active">
+        <i class='bx bx-check-square'></i> Tasks
+      </a>
+      <a href="report.html" class="nav-item">
+        <i class='bx bx-bar-chart-alt-2'></i> Reports
+      </a>
+      <a href="team.html" class="nav-item">
+        <i class='bx bx-user-circle'></i> Team
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item">
+        <i class='bx bx-cog'></i> Settings
+      </a>
+      <a href="../auth/login.html" class="nav-item nav-item-danger">
+        <i class='bx bx-log-out'></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="search-bar">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search performance...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action">
+          <i class='bx bx-bell'></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-action">
+          <i class='bx bx-moon'></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name">Alex Rivera</span>
+            <span class="user-role">Project Manager</span>
+          </div>
+          <img src="https://ui-avatars.com/api/?name=Alex+Rivera&background=0D8ABC&color=fff&rounded=true"
+            alt="Alex Rivera" class="user-avatar" width="36" height="36">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Task Manager</h1>
+          <p>Manage and track your daily operational performance.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn">
+            <i class='bx bx-filter-alt'></i> All Categories
+          </button>
+          <button class="btn">
+            <i class='bx bx-calendar'></i> Today, Oct 24
+          </button>
+          <button class="btn btn-primary">
+            <i class='bx bx-plus'></i> Add Task
+          </button>
+        </div>
+      </div>
+
+      <!-- Table Section -->
+      <div class="table-card">
+        <table class="task-table">
+          <thead>
+            <tr>
+              <th>Task Title</th>
+              <th>Category</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Time Window</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- Row 1 -->
+            <tr>
+              <td class="task-title-cell">
+                <div class="t-name">Quarterly Performance Review Design</div>
+                <div class="t-id">ID: PRX-1025</div>
+              </td>
+              <td><span class="category-badge">Design</span></td>
+              <td><span class="priority-pill priority-high">High</span></td>
+              <td>
+                <span class="status-badge status-inprogress">
+                  <i class='bx bx-play-circle'></i> In Progress
+                </span>
+              </td>
+              <td>
+                <div class="time-window">
+                  <span>09:00 AM</span>
+                  <span><span class="dot"></span> 11:30 AM</span>
+                </div>
+              </td>
+              <td>
+                <div class="action-btns">
+                  <button><i class='bx bx-pencil'></i></button>
+                  <button><i class='bx bx-check-circle'></i></button>
+                  <button><i class='bx bx-trash'></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr>
+              <td class="task-title-cell">
+                <div class="t-name">Team Sync & KPI Alignment</div>
+                <div class="t-id">ID: PRX-1026</div>
+              </td>
+              <td><span class="category-badge">Management</span></td>
+              <td><span class="priority-pill priority-medium">Medium</span></td>
+              <td>
+                <span class="status-badge status-completed">
+                  <i class='bx bx-check-circle'></i> Completed
+                </span>
+              </td>
+              <td>
+                <div class="time-window">
+                  <span>12:00 PM</span>
+                  <span><span class="dot"></span> 01:00 PM</span>
+                </div>
+              </td>
+              <td>
+                <div class="action-btns">
+                  <button><i class='bx bx-pencil'></i></button>
+                  <button><i class='bx bx-check-circle'></i></button>
+                  <button><i class='bx bx-trash'></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr>
+              <td class="task-title-cell">
+                <div class="t-name">Cloud Infrastructure Security Audit</div>
+                <div class="t-id">ID: PRX-1027</div>
+              </td>
+              <td><span class="category-badge">DevOps</span></td>
+              <td><span class="priority-pill priority-high">High</span></td>
+              <td>
+                <span class="status-badge status-delayed">
+                  <i class='bx bx-error-circle'></i> Delayed
+                </span>
+              </td>
+              <td>
+                <div class="time-window">
+                  <span>02:00 PM</span>
+                  <span><span class="dot"></span> 04:30 PM</span>
+                </div>
+              </td>
+              <td>
+                <div class="action-btns">
+                  <button><i class='bx bx-pencil'></i></button>
+                  <button><i class='bx bx-check-circle'></i></button>
+                  <button><i class='bx bx-trash'></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Row 4 -->
+            <tr>
+              <td class="task-title-cell">
+                <div class="t-name">Client Feedback Implementation</div>
+                <div class="t-id">ID: PRX-1028</div>
+              </td>
+              <td><span class="category-badge">Product</span></td>
+              <td><span class="priority-pill priority-medium">Medium</span></td>
+              <td>
+                <span class="status-badge status-pending">
+                  <i class='bx bx-time-five'></i> Pending
+                </span>
+              </td>
+              <td>
+                <div class="time-window">
+                  <span>05:00 PM</span>
+                  <span><span class="dot"></span> 06:30 PM</span>
+                </div>
+              </td>
+              <td>
+                <div class="action-btns">
+                  <button><i class='bx bx-pencil'></i></button>
+                  <button><i class='bx bx-check-circle'></i></button>
+                  <button><i class='bx bx-trash'></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Row 5 -->
+            <tr>
+              <td class="task-title-cell">
+                <div class="t-name">Documentation & Process Mapping</div>
+                <div class="t-id">ID: PRX-1029</div>
+              </td>
+              <td><span class="category-badge">Operations</span></td>
+              <td><span class="priority-pill priority-low">Low</span></td>
+              <td>
+                <span class="status-badge status-completed">
+                  <i class='bx bx-check-circle'></i> Completed
+                </span>
+              </td>
+              <td>
+                <div class="time-window">
+                  <span>10:30 AM</span>
+                  <span><span class="dot"></span> 11:45 AM</span>
+                </div>
+              </td>
+              <td>
+                <div class="action-btns">
+                  <button><i class='bx bx-pencil'></i></button>
+                  <button><i class='bx bx-check-circle'></i></button>
+                  <button><i class='bx bx-trash'></i></button>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination-bar">
+          <div>Showing 5 of 24 tasks</div>
+          <div class="page-controls">
+            <button class="page-btn">Previous</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Cards -->
+      <div class="summary-cards">
+
+        <div class="summary-card purple-deep">
+          <div class="card-icon"><i class='bx bx-check-circle'></i></div>
+          <h3 class="card-title">Task Completion Rate</h3>
+          <p class="card-desc">You completed 12% more tasks this week compared to last.</p>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 78%;"></div>
+            </div>
+            <span class="progress-value">78%</span>
+          </div>
+        </div>
+
+        <div class="summary-card purple-light">
+          <div class="card-icon"><i class='bx bx-time'></i></div>
+          <h3 class="card-title">Average Focus Time</h3>
+          <p class="card-desc">Your focus duration is currently 2.4h per high-priority task.</p>
+          <a href="#" class="card-link">View breakdown &rarr;</a>
+        </div>
+
+        <div class="summary-card dashed">
+          <div class="card-icon"><i class='bx bx-plus'></i></div>
+          <p class="card-desc" style="max-width: 200px; margin-bottom: 1rem;">Quick-assign a teammate to a delayed task
+          </p>
+          <button class="btn">Assign Now</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>&copy; 2024 PerformX Productivity. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Support</a>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+
+</html>

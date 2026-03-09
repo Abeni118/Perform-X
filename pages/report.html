@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PerformX — Reports</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="../assets/css/report.css">
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo">
+        <div class="logo-icon"><i class='bx bx-pulse'></i></div>
+        <span class="brand-name">PerformX</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">
+        <i class='bx bx-grid-alt'></i> Dashboard
+      </a>
+      <a href="task.html" class="nav-item">
+        <i class='bx bx-check-square'></i> Tasks
+      </a>
+      <a href="report.html" class="nav-item active">
+        <i class='bx bx-bar-chart-alt-2'></i> Reports
+      </a>
+      <a href="team.html" class="nav-item">
+        <i class='bx bx-user-circle'></i> Team
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item">
+        <i class='bx bx-cog'></i> Settings
+      </a>
+      <a href="../auth/login.html" class="nav-item nav-item-danger">
+        <i class='bx bx-log-out'></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="search-bar">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search performance...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action">
+          <i class='bx bx-bell'></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-action">
+          <i class='bx bx-moon'></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name">Alex Rivera</span>
+            <span class="user-role">Project Manager</span>
+          </div>
+          <img src="https://ui-avatars.com/api/?name=Alex+Rivera&background=0D8ABC&color=fff&rounded=true"
+            alt="Alex Rivera" class="user-avatar" width="36" height="36">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Performance Reports</h1>
+          <p>Deep dive into your productivity trends and team benchmarks.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn">
+            <i class='bx bx-filter'></i> Filter
+          </button>
+          <button class="btn">
+            <i class='bx bx-download'></i> Export Data
+          </button>
+          <button class="btn btn-primary">
+            Update Insights
+          </button>
+        </div>
+      </div>
+
+      <!-- Detail KPI Grid -->
+      <div class="kpi-grid">
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue"><i class='bx bx-target-lock'></i></div>
+            <div class="kpi-trend trend-up"><i class='bx bx-up-arrow-alt'></i> +5.4%</div>
+          </div>
+          <div class="kpi-label">Performance Score</div>
+          <div class="kpi-value">94.2</div>
+          <div class="kpi-meta"><i class='bx bx-info-circle'></i> Based on task efficiency and focus time</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue"><i class='bx bx-check-shield'></i></div>
+            <div class="kpi-trend trend-up"><i class='bx bx-up-arrow-alt'></i> +2.1%</div>
+          </div>
+          <div class="kpi-label">Success Percentage</div>
+          <div class="kpi-value">88%</div>
+          <div class="kpi-meta"><i class='bx bx-info-circle'></i> Completed vs. assigned task ratio</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue"><i class='bx bx-flame'></i></div>
+            <div class="kpi-trend trend-gray"><i class='bx bx-line-chart'></i> New Record</div>
+          </div>
+          <div class="kpi-label">Active Streak</div>
+          <div class="kpi-value">12 Days</div>
+          <div class="kpi-meta"><i class='bx bx-info-circle'></i> Consecutive days meeting daily goals</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue"><i class='bx bx-calendar'></i></div>
+            <div class="kpi-trend trend-down"><i class='bx bx-down-arrow-alt'></i> -12%</div>
+          </div>
+          <div class="kpi-label">Avg. Completion Time</div>
+          <div class="kpi-value">4.2 hrs</div>
+          <div class="kpi-meta"><i class='bx bx-info-circle'></i> Time taken to finish high-priority tasks</div>
+        </div>
+
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="charts-grid-equal">
+
+        <div class="chart-card">
+          <div class="card-title-row">
+            <div>
+              <h3>Weekly Performance</h3>
+              <p>Activity breakdown for current week</p>
+            </div>
+            <span class="badge-blue-light">Live Updates</span>
+          </div>
+          <div class="chart-container-large">
+            <canvas id="weeklyPerformance"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-title-row">
+            <div>
+              <h3>Monthly Benchmarks</h3>
+              <p>Actual vs. Target performance</p>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-dot dot-actual"></span> Actual
+              <span class="legend-dot dot-target"></span> Target
+            </div>
+          </div>
+          <div class="chart-container-large">
+            <canvas id="monthlyBenchmarks"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Streak Heatmap Section -->
+      <div class="chart-card streak-section">
+        <div class="card-title-row" style="margin-bottom: 0.5rem;">
+          <div>
+            <h3>Activity Streak</h3>
+            <p>Your consistency over the last 90 days</p>
+          </div>
+          <div class="streak-actions">
+            <div class="streak-legend">
+              <span class="muted-text text-sm">Less</span>
+              <span class="heat-dot heat-0"></span>
+              <span class="heat-dot heat-1"></span>
+              <span class="heat-dot heat-2"></span>
+              <span class="heat-dot heat-3"></span>
+              <span class="muted-text text-sm">More</span>
+            </div>
+            <button class="btn btn-sm"><i class='bx bx-calendar-event'></i> Last 3 Months</button>
+          </div>
+        </div>
+
+        <div class="heatmap-grid" id="heatmapGrid">
+          <!-- JS will populate dots -->
+        </div>
+
+        <div class="streak-bottom">
+          <div class="streak-stats-row">
+            <div class="s-stat">
+              <div class="s-val text-primary">12 Days</div>
+              <div class="s-lbl">CURRENT STREAK</div>
+            </div>
+            <div class="s-stat">
+              <div class="s-val">28 Days</div>
+              <div class="s-lbl">LONGEST STREAK</div>
+            </div>
+            <div class="s-stat">
+              <div class="s-val">84%</div>
+              <div class="s-lbl">CONSISTENCY</div>
+            </div>
+          </div>
+          <div class="streak-cheer">
+            <i class='bx bx-like'></i> Keep it up, Alex! You're in the top 5% this month.
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Tip & Stats -->
+      <div class="bottom-insights-grid">
+
+        <div class="ai-tip-card">
+          <div class="ai-tip-icon">
+            <i class='bx bx-line-chart'></i>
+          </div>
+          <div class="ai-tip-content">
+            <h4>AI Performance Tip</h4>
+            <p>You're most productive between <strong class="text-primary">9:00 AM and 11:30 AM.</strong><br> We suggest
+              scheduling your high-priority "Deep Work" tasks during this window to increase your success percentage by
+              an estimated 14%.</p>
+            <a href="#" class="tip-link">View detailed breakdown &rarr;</a>
+          </div>
+        </div>
+
+        <div class="quick-stats-card">
+          <h4 class="qs-title">QUICK STATS</h4>
+          <div class="qs-list">
+            <div class="qs-row">
+              <span class="qs-lbl">Total Focus Time</span>
+              <span class="qs-val">142h</span>
+            </div>
+            <div class="qs-row">
+              <span class="qs-lbl">Meetings Attended</span>
+              <span class="qs-val">24</span>
+            </div>
+            <div class="qs-row border-0">
+              <span class="qs-lbl">Tasks Overdue</span>
+              <span class="qs-val">0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>&copy; 2024 PerformX Productivity. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Support</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Script for heatmap and charts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Weekly Performance Chart
+      const weekCtx = document.getElementById('weeklyPerformance');
+      if (weekCtx) {
+        new Chart(weekCtx, {
+          type: 'line',
+          data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+              label: 'Performance',
+              data: [82, 88, 75, 94, 92, 60, 65],
+              borderColor: '#4F46E5',
+              borderWidth: 2,
+              tension: 0.4,
+              pointRadius: 0,
+              fill: true,
+              backgroundColor: (context) => {
+                const ctx = context.chart.ctx;
+                const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+                gradient.addColorStop(0, 'rgba(79, 70, 229, 0.15)');
+                gradient.addColorStop(1, 'rgba(79, 70, 229, 0)');
+                return gradient;
+              }
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: {
+                min: 0,
+                max: 100,
+                ticks: { stepSize: 25, font: { family: 'Inter', size: 10 }, color: '#9CA3AF' },
+                grid: { color: '#F3F4F6', drawBorder: false, borderDash: [4, 4] }
+              },
+              x: {
+                grid: { display: false, drawBorder: false },
+                ticks: { font: { family: 'Inter', size: 10 }, color: '#9CA3AF' }
+              }
+            }
+          }
+        });
+      }
+
+      // 2. Monthly Benchmarks Bar Chart
+      const monthCtx = document.getElementById('monthlyBenchmarks');
+      if (monthCtx) {
+        new Chart(monthCtx, {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+              {
+                label: 'Target',
+                data: [80, 80, 85, 85, 90, 95], // gray background bar
+                backgroundColor: '#F3F4F6',
+                borderRadius: 4,
+                barPercentage: 0.5,
+                categoryPercentage: 0.4
+              },
+              {
+                label: 'Actual',
+                data: [72, 78, 85, 82, 90, 94], // purple foreground bar overlay
+                backgroundColor: '#4F46E5',
+                borderRadius: 4,
+                barPercentage: 0.5,
+                categoryPercentage: 0.4
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            // Allow overlapping bars to mimic the dual-bar visual
+            scales: {
+              x: {
+                stacked: true,
+                grid: { display: false, drawBorder: false },
+                ticks: { font: { family: 'Inter', size: 10 }, color: '#9CA3AF' }
+              },
+              y: {
+                min: 0,
+                max: 100,
+                ticks: { stepSize: 25, font: { family: 'Inter', size: 10 }, color: '#9CA3AF' },
+                grid: { color: '#F3F4F6', drawBorder: false, borderDash: [4, 4] }
+              }
+            },
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+
+        // Fix for standard overlapping bar chart since ChartJS stacks by default
+        monthCtx.chart.options.scales.x.stacked = false;
+        monthCtx.chart.options.scales.y.stacked = false;
+        monthCtx.chart.update();
+      }
+
+      // 3. Generate Heatmap Grid
+      const grid = document.getElementById('heatmapGrid');
+      if (grid) {
+        const columns = 16;
+        const rows = 6;
+        let html = '';
+
+        for (let r = 0; r < rows; r++) {
+          html += '<div class="heat-col">';
+          for (let c = 0; c < columns; c++) {
+            // Randomly assign a heat level 0-3
+            const heatLvl = Math.floor(Math.random() * 4);
+            html += `<div class="heat-dot heat-${heatLvl}"></div>`;
+          }
+          html += '</div>';
+        }
+        grid.innerHTML = html;
+      }
+    });
+  </script>
+</body>
+
+</html>

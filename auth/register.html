@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PerformX — Create Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+  <div class="auth-split">
+
+    <!-- Left: Form -->
+    <div class="auth-left">
+      <div class="auth-content">
+        <a href="../index.html" class="auth-brand">
+          <div class="auth-brand-logo"><i class='bx bx-pulse'></i></div>
+          <span class="auth-brand-name">PerformX</span>
+        </a>
+
+        <div class="auth-header">
+          <h1>Create your account</h1>
+          <p>Start optimizing your productivity today.</p>
+        </div>
+
+        <form id="registerForm">
+          <div class="form-group">
+            <label>FULL NAME</label>
+            <div class="input-wrapper">
+              <i class='bx bx-user'></i>
+              <input type="text" class="form-input" placeholder="John Doe" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>EMAIL ADDRESS</label>
+            <div class="input-wrapper">
+              <i class='bx bx-envelope'></i>
+              <input type="email" class="form-input" placeholder="john@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>PASSWORD</label>
+            <div class="input-wrapper">
+              <i class='bx bx-lock-alt'></i>
+              <input type="password" class="form-input" placeholder="••••••••" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>I AM JOINING AS A...</label>
+            <div class="input-wrapper">
+              <i class='bx bx-briefcase'></i>
+              <select class="form-input" required>
+                <option value="Personal">Personal</option>
+                <option value="Team Member">Team Member</option>
+                <option value="Manager">Manager</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Create Account
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+
+        <div class="auth-footer" style="margin-top: 1rem; font-size: 0.75rem; color: #9CA3AF;">
+          By clicking "Create Account", you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy
+            Policy</a>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Graphic -->
+    <div class="auth-right">
+      <img src="../assets/register_bg.png" alt="Abstract 3D Shape" class="auth-bg-img">
+      <div class="auth-right-overlay"></div>
+      <div class="glass-card">
+        <i class='bx bx-rocket'></i>
+        <h3>Elevate your<br>productivity to the next level.</h3>
+        <p>"PerformX changed how our engineering team tracks sprint velocity. It's clean, fast, and exactly what we
+          needed." - Sarah Chen</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-submit');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Creating account...';
+      btn.style.opacity = '0.8';
+
+      setTimeout(() => {
+        window.location.href = '../index.html'; // Navigate to dashboard
+      }, 800);
+    });
+  </script>
+</body>
+
+</html>
