@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PerformX — Admin Portal</title>
+    <title>PerformX Admin — User Directory</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -15,65 +15,60 @@
     <!-- Sidebar -->
     <aside class="admin-sidebar">
         <a href="../index.html" class="admin-brand">
-            <div class="admin-logo-icon"><i class='bx bx-pulse'></i></div>
-            <span class="admin-brand-name">PerformX</span>
+            <div class="admin-logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="4" fill="#1C1C1E" />
+                    <path d="M16 8L8 16M8 8L16 16" stroke="white" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <span class="admin-brand-name">PerformX Admin</span>
         </a>
 
         <nav class="admin-nav">
-            <a href="#" class="admin-nav-item active">
-                <i class='bx bx-grid-alt'></i> Overview
+            <a href="index.html" class="admin-nav-item active">
+                <i class='bx bx-group'></i> User Management
             </a>
-            <a href="#" class="admin-nav-item">
-                <i class='bx bx-user'></i> User Management
-            </a>
-            <a href="#" class="admin-nav-item">
+            <a href="compliance.html" class="admin-nav-item">
                 <i class='bx bx-check-shield'></i> Compliance Vault
             </a>
-            <a href="#" class="admin-nav-item">
-                <i class='bx bx-trending-up'></i> System Logs
+            <a href="logs.html" class="admin-nav-item">
+                <i class='bx bx-file'></i> System Logs
             </a>
-            <a href="#" class="admin-nav-item">
-                <i class='bx bx-cog'></i> Settings
+            <a href="settings.html" class="admin-nav-item">
+                <i class='bx bx-cog'></i> Admin Settings
             </a>
         </nav>
 
         <div class="admin-sidebar-footer">
-            <div class="privacy-mode-alert">
-                <div class="privacy-mode-title">
-                    <i class='bx bx-lock-alt'></i> Privacy Mode Active
-                </div>
-                <div class="privacy-mode-text">
-                    Admin access is restricted to metadata only. Individual task data remains encrypted.
-                </div>
-            </div>
             <a href="../auth/login.html" class="sign-out-btn">
-                <i class='bx bx-log-out-circle'></i> Sign Out
+                <i class='bx bx-log-out'></i> Sign Out
             </a>
         </div>
     </aside>
 
     <!-- Main View -->
     <main class="admin-main">
-
         <!-- Top Header -->
         <header class="admin-topbar">
-            <div class="search-box">
-                <i class='bx bx-search'></i>
-                <input type="text" placeholder="Search users or system reports...">
-            </div>
+            <h1 class="topbar-title">User Management</h1>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search resources...">
+                </div>
 
-            <div class="topbar-actions">
-                <span class="system-status">System Secure</span>
                 <div class="notification-bell">
                     <i class='bx bx-bell'></i>
+                    <span class="notification-dot"></span>
                 </div>
 
                 <div class="admin-profile">
                     <div class="admin-profile-text">
-                        <span class="admin-profile-name">Admin Portal</span>
-                        <span class="admin-profile-role">Enterprise Access</span>
+                        <span class="admin-profile-name">Admin User</span>
+                        <span class="admin-profile-role">SUPER ADMIN</span>
                     </div>
-                    <img src="https://ui-avatars.com/api/?name=Admin&background=111827&color=fff&rounded=true"
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=random&color=fff&rounded=true"
                         alt="Admin" class="admin-avatar">
                 </div>
             </div>
@@ -81,302 +76,300 @@
 
         <!-- Page Content -->
         <div class="admin-page-content">
-
-            <!-- Breadcrumbs & Meta -->
-            <div class="breadcrumbs">
-                Admin Dashboard <i class='bx bx-chevron-right'></i> <span>PerformX Governance</span>
-            </div>
-
+            <!-- Header Section -->
             <div class="page-header-row">
-                <h1 class="page-title">User Overview & Compliance</h1>
+                <div class="page-header-text">
+                    <h2 class="page-title">User Directory</h2>
+                    <p class="page-subtitle">Monitor and manage access across the enterprise infrastructure.</p>
+                </div>
                 <div class="header-buttons">
-                    <button class="btn"><i class='bx bx-info-circle'></i> Policy Updates</button>
-                    <button class="btn btn-primary"><i class='bx bx-bar-chart-alt-2'></i> Generate Report</button>
+                    <button class="btn btn-outline"><i class='bx bx-download'></i> Export CSV</button>
+                    <button class="btn btn-primary"><i class='bx bx-user-plus'></i> Create New User</button>
                 </div>
             </div>
 
             <!-- KPI Grid -->
             <div class="kpi-grid">
+                <!-- Card 1 -->
                 <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon icon-blue"><i class='bx bx-user'></i></div>
-                        <div class="kpi-trend trend-pos">+12%</div>
+                    <div class="kpi-card-inner">
+                        <div class="kpi-icon-wrapper">
+                            <div class="kpi-icon"><i class='bx bx-group'></i></div>
+                            <div class="kpi-trend trend-pos"><i class='bx bx-line-chart'></i> +12% from last month</div>
+                        </div>
+                        <div class="kpi-label">Total Active Users</div>
+                        <div class="kpi-value">12,482</div>
                     </div>
-                    <div class="kpi-label">Total Users</div>
-                    <div class="kpi-value">1,284</div>
                 </div>
 
+                <!-- Card 2 -->
                 <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon icon-blue"><i class='bx bx-pulse'></i></div>
-                        <div class="kpi-trend trend-pos">+5.2%</div>
+                    <div class="kpi-card-inner">
+                        <div class="kpi-icon-wrapper">
+                            <div class="kpi-icon"><i class='bx bx-check-shield'></i></div>
+                            <div class="kpi-trend trend-neutral"><i class='bx bx-right-top-arrow-circle'></i> Stable
+                            </div>
+                        </div>
+                        <div class="kpi-label">System Compliance</div>
+                        <div class="kpi-value">99.8%</div>
                     </div>
-                    <div class="kpi-label">Active Users</div>
-                    <div class="kpi-value">1,042</div>
                 </div>
 
+                <!-- Card 3 -->
                 <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon icon-blue"><i class='bx bx-shield-quarter'></i></div>
-                        <div class="kpi-trend trend-neg">-1.4%</div>
+                    <div class="kpi-card-inner">
+                        <div class="kpi-icon-wrapper">
+                            <div class="kpi-icon"><i class='bx bx-line-chart'></i></div>
+                            <div class="kpi-trend trend-neg"><i class='bx bx-trending-down'></i> -2% fluctuation</div>
+                        </div>
+                        <div class="kpi-label">Avg Performance</div>
+                        <div class="kpi-value">86/100</div>
                     </div>
-                    <div class="kpi-label">Avg. System Performance</div>
-                    <div class="kpi-value">88.4%</div>
                 </div>
 
+                <!-- Card 4 -->
                 <div class="kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon icon-blue"><i class='bx bx-trending-up'></i></div>
-                        <div class="kpi-trend trend-pos">+3.1%</div>
+                    <div class="kpi-card-inner">
+                        <div class="kpi-icon-wrapper">
+                            <div class="kpi-icon"><i class='bx bx-shield-quarter'></i></div>
+                            <div class="kpi-trend trend-neg"><i class='bx bx-trending-down'></i> 4 Pending Review</div>
+                        </div>
+                        <div class="kpi-label">Access Requests</div>
+                        <div class="kpi-value">24</div>
                     </div>
-                    <div class="kpi-label">Platform Growth</div>
-                    <div class="kpi-value">+24.8%</div>
                 </div>
             </div>
 
-            <!-- Governance Table -->
+            <!-- Table Section -->
             <div class="table-section">
-                <div class="table-header">
-                    <div>
-                        <h2 class="table-title">Worker Governance Table</h2>
-                        <p class="table-subtitle">Manage platform access and monitor high-level engagement metrics.</p>
+                <!-- Table Tools -->
+                <div class="table-toolbar">
+                    <div class="table-search">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Search name, email, or role...">
                     </div>
-                    <div class="table-controls">
-                        <button class="btn btn-sm">Export CSV</button>
-                        <button class="btn btn-sm">Filters</button>
+                    <div class="table-actions">
+                        <button class="btn btn-outline btn-filter"><i class='bx bx-filter-alt'></i> Filters</button>
+                        <button class="btn btn-ghost disabled">Bulk Actions (0) <i
+                                class='bx bx-dots-horizontal-rounded'></i></button>
                     </div>
                 </div>
 
-                <table class="governance-table">
+                <!-- User Table -->
+                <table class="user-table">
                     <thead>
                         <tr>
-                            <th>User Name</th>
-                            <th>Role</th>
-                            <th>Total Tasks</th>
-                            <th>Completion Rate</th>
-                            <th>Performance Score</th>
-                            <th>Account Status</th>
-                            <th>Actions</th>
+                            <th class="col-checkbox"><input type="checkbox"></th>
+                            <th>USER DETAILS</th>
+                            <th>ROLE</th>
+                            <th>ACCOUNT TYPE</th>
+                            <th>TASKS</th>
+                            <th>COMPLETION</th>
+                            <th>SCORE</th>
+                            <th>STATUS</th>
+                            <th class="col-actions"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Row 1 -->
                         <tr>
+                            <td class="col-checkbox"><input type="checkbox"></td>
                             <td>
-                                <div class="user-cell">
-                                    <img src="https://ui-avatars.com/api/?name=Sarah+Montgomery&background=FCE7F3&color=BE185D"
-                                        class="user-avatar-small" alt="Sarah">
-                                    <div class="user-details">
-                                        <strong>Sarah Montgomery</strong>
-                                        <span>ID: PFX-001</span>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Sarah+Jenkins&background=random"
+                                        alt="Avatar">
+                                    <div class="user-details-text">
+                                        <span class="user-name">Sarah Jenkins</span>
+                                        <span class="user-email">s.jenkins@performx.io</span>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="role-badge">Senior Analyst</span></td>
-                            <td class="metric-cell">142</td>
+                            <td><span class="badge badge-gray">Admin</span></td>
+                            <td class="account-type">Enterprise</td>
+                            <td class="task-count">124</td>
                             <td>
-                                <div class="progress-cell">
-                                    <span class="progress-val">94%</span>
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill" style="width: 94%;"></div>
+                                <div class="completion-cell">
+                                    <span class="completion-text">98.2%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 98.2%;"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <div class="score-indicator">
-                                    92
-                                </div>
-                            </td>
-                            <td><span class="status-badge">Active</span></td>
-                            <td>
-                                <div class="actions-cell">
-                                    <button class="btn-action-outline">Suspend</button>
-                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
-                                </div>
-                            </td>
+                            <td class="score-val"><strong>94</strong></td>
+                            <td class="status-cell"><strong>Active</strong></td>
+                            <td class="col-actions"><button class="btn-icon"><i
+                                        class='bx bx-dots-vertical-rounded'></i></button></td>
                         </tr>
 
                         <!-- Row 2 -->
                         <tr>
+                            <td class="col-checkbox"><input type="checkbox"></td>
                             <td>
-                                <div class="user-cell">
-                                    <img src="https://ui-avatars.com/api/?name=Marcus+Chen&background=FEF08A&color=854D0E"
-                                        class="user-avatar-small" alt="Marcus">
-                                    <div class="user-details">
-                                        <strong>Marcus Chen</strong>
-                                        <span>ID: PFX-002</span>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Marcus+Thorne&background=random"
+                                        alt="Avatar">
+                                    <div class="user-details-text">
+                                        <span class="user-name">Marcus Thorne</span>
+                                        <span class="user-email">m.thorne@performx.io</span>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="role-badge">DevOps Lead</span></td>
-                            <td class="metric-cell">89</td>
+                            <td><span class="badge badge-gray">Manager</span></td>
+                            <td class="account-type">Professional</td>
+                            <td class="task-count">89</td>
                             <td>
-                                <div class="progress-cell">
-                                    <span class="progress-val">88%</span>
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill" style="width: 88%;"></div>
+                                <div class="completion-cell">
+                                    <span class="completion-text">85.5%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85.5%;"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <div class="score-indicator">
-                                    <span class="score-dot"></span> 85
-                                </div>
-                            </td>
-                            <td><span class="status-badge">Active</span></td>
-                            <td>
-                                <div class="actions-cell">
-                                    <button class="btn-action-outline">Suspend</button>
-                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
-                                </div>
-                            </td>
+                            <td class="score-val text-blue"><strong>78</strong></td>
+                            <td class="status-cell"><strong>Active</strong></td>
+                            <td class="col-actions"><button class="btn-icon"><i
+                                        class='bx bx-dots-vertical-rounded'></i></button></td>
                         </tr>
 
                         <!-- Row 3 -->
                         <tr>
+                            <td class="col-checkbox"><input type="checkbox"></td>
                             <td>
-                                <div class="user-cell">
-                                    <img src="https://ui-avatars.com/api/?name=Alena+Volkov&background=E0E7FF&color=4338CA"
-                                        class="user-avatar-small" alt="Alena">
-                                    <div class="user-details">
-                                        <strong>Alena Volkov</strong>
-                                        <span>ID: PFX-003</span>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Elena+Rodriguez&background=random"
+                                        alt="Avatar">
+                                    <div class="user-details-text">
+                                        <span class="user-name">Elena Rodriguez</span>
+                                        <span class="user-email">e.rod@performx.io</span>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="role-badge">UX Researcher</span></td>
-                            <td class="metric-cell">215</td>
+                            <td><span class="badge badge-gray">Standard</span></td>
+                            <td class="account-type">Enterprise</td>
+                            <td class="task-count">215</td>
                             <td>
-                                <div class="progress-cell">
-                                    <span class="progress-val">98%</span>
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill" style="width: 98%;"></div>
+                                <div class="completion-cell">
+                                    <span class="completion-text">92.1%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 92.1%;"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <div class="score-indicator">
-                                    96
-                                </div>
-                            </td>
-                            <td><span class="status-badge">Active</span></td>
-                            <td>
-                                <div class="actions-cell">
-                                    <button class="btn-action-outline">Suspend</button>
-                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
-                                </div>
-                            </td>
+                            <td class="score-val text-blue"><strong>88</strong></td>
+                            <td class="status-cell"><span class="badge badge-red">Suspended</span></td>
+                            <td class="col-actions"><button class="btn-icon"><i
+                                        class='bx bx-dots-vertical-rounded'></i></button></td>
                         </tr>
 
                         <!-- Row 4 -->
                         <tr>
+                            <td class="col-checkbox"><input type="checkbox"></td>
                             <td>
-                                <div class="user-cell">
-                                    <img src="https://ui-avatars.com/api/?name=Julian+Barnes&background=D1FAE5&color=047857"
-                                        class="user-avatar-small" alt="Julian">
-                                    <div class="user-details">
-                                        <strong>Julian Barnes</strong>
-                                        <span>ID: PFX-004</span>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=David+Chen&background=random"
+                                        alt="Avatar">
+                                    <div class="user-details-text">
+                                        <span class="user-name">David Chen</span>
+                                        <span class="user-email">d.chen@performx.io</span>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="role-badge">Project Manager</span></td>
-                            <td class="metric-cell">104</td>
+                            <td><span class="badge badge-gray">Standard</span></td>
+                            <td class="account-type">Basic</td>
+                            <td class="task-count">45</td>
                             <td>
-                                <div class="progress-cell">
-                                    <span class="progress-val">76%</span>
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill" style="width: 76%;"></div>
+                                <div class="completion-cell">
+                                    <span class="completion-text">72.4%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 72.4%;"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <div class="score-indicator">
-                                    72
-                                </div>
-                            </td>
-                            <td><span class="status-badge suspended">Suspended</span></td>
-                            <td>
-                                <div class="actions-cell">
-                                    <button class="btn-action-filled">Activate</button>
-                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
-                                </div>
-                            </td>
+                            <td class="score-val"><strong>65</strong></td>
+                            <td class="status-cell"><strong>Active</strong></td>
+                            <td class="col-actions"><button class="btn-icon"><i
+                                        class='bx bx-dots-vertical-rounded'></i></button></td>
                         </tr>
 
                         <!-- Row 5 -->
                         <tr>
+                            <td class="col-checkbox"><input type="checkbox"></td>
                             <td>
-                                <div class="user-cell">
-                                    <img src="https://ui-avatars.com/api/?name=Elena+Rodriguez&background=DBEAFE&color=1D4ED8"
-                                        class="user-avatar-small" alt="Elena">
-                                    <div class="user-details">
-                                        <strong>Elena Rodriguez</strong>
-                                        <span>ID: PFX-005</span>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Aisha+Varma&background=random"
+                                        alt="Avatar">
+                                    <div class="user-details-text">
+                                        <span class="user-name">Aisha Varma</span>
+                                        <span class="user-email">a.varma@performx.io</span>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="role-badge">Data Scientist</span></td>
-                            <td class="metric-cell">167</td>
+                            <td><span class="badge badge-gray">Manager</span></td>
+                            <td class="account-type">Professional</td>
+                            <td class="task-count">167</td>
                             <td>
-                                <div class="progress-cell">
-                                    <span class="progress-val">91%</span>
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill" style="width: 91%;"></div>
+                                <div class="completion-cell">
+                                    <span class="completion-text">95%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 95%;"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <div class="score-indicator">
-                                    <span class="score-dot"></span> 89
-                                </div>
-                            </td>
-                            <td><span class="status-badge">Active</span></td>
-                            <td>
-                                <div class="actions-cell">
-                                    <button class="btn-action-outline">Suspend</button>
-                                    <i class='bx bx-dots-vertical-rounded more-opts'></i>
-                                </div>
-                            </td>
+                            <td class="score-val"><strong>91</strong></td>
+                            <td class="status-cell"><strong>Active</strong></td>
+                            <td class="col-actions"><button class="btn-icon"><i
+                                        class='bx bx-dots-vertical-rounded'></i></button></td>
                         </tr>
 
+                        <!-- Row 6 -->
+                        <tr>
+                            <td class="col-checkbox"><input type="checkbox"></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Julian+Vance&background=random"
+                                        alt="Avatar">
+                                    <div class="user-details-text">
+                                        <span class="user-name">Julian Vance</span>
+                                        <span class="user-email">j.vance@performx.io</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="badge badge-gray">Restricted</span></td>
+                            <td class="account-type">Basic</td>
+                            <td class="task-count">12</td>
+                            <td>
+                                <div class="completion-cell">
+                                    <span class="completion-text">45.8%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 45.8%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="score-val"><strong>42</strong></td>
+                            <td class="status-cell"><span class="badge badge-light-gray">Pending</span></td>
+                            <td class="col-actions"><button class="btn-icon"><i
+                                        class='bx bx-dots-vertical-rounded'></i></button></td>
+                        </tr>
                     </tbody>
                 </table>
 
-                <!-- Table Footer -->
+                <!-- Pagination -->
                 <div class="table-footer">
-                    <div class="encryption-notice">
-                        <i class='bx bx-shield-plus'></i>
-                        This table is end-to-end encrypted. Personal descriptions are hidden by platform policy.
-                    </div>
+                    <div class="showing-text">Showing <strong>6</strong> of <strong>1,248</strong> total users</div>
                     <div class="pagination">
-                        <span style="cursor: pointer; font-weight: 500;">Previous</span>
-                        <div class="page-num active">1</div>
-                        <div class="page-num">2</div>
-                        <span style="cursor: pointer; font-weight: 500;">Next</span>
+                        <button class="page-btn page-prev">Previous</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn page-next">Next</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Privacy Engine Footer -->
-            <div class="privacy-engine">
-                <div class="pe-title">
-                    <i class='bx bx-check-shield'></i> PerformX Privacy Engine
-                </div>
-                <p class="pe-body">
-                    PerformX operates under strict data sovereignty principles. Administrative access is limited to
-                    operational metrics only. Individual task content, private journals, and daily focus blocks are
-                    <strong>zero-knowledge encrypted</strong> and never visible to management or IT administrators.
-                </p>
-                <div class="pe-compliance">
-                    <span>Security Audit: 2024-Q3 Passed</span>
-                    <div class="pe-dot"></div>
-                    <span>GDPR / CCPA Compliant</span>
-                    <div class="pe-dot"></div>
-                    <span>SOC2 Certified</span>
-                </div>
-            </div>
-
+            <!-- Footer -->
+            <footer class="admin-footer">
+                &copy; 2026 PERFORMX ADMIN &bull; SECURE DATA ENVIRONMENT &bull; ISO 27001 COMPLIANT
+            </footer>
         </div>
     </main>
 </body>

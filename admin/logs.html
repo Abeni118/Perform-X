@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PerformX Admin — System Logs</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <a href="../index.html" class="admin-brand">
+            <div class="admin-logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="4" fill="#1C1C1E" />
+                    <path d="M16 8L8 16M8 8L16 16" stroke="white" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <span class="admin-brand-name">PerformX Admin</span>
+        </a>
+
+        <nav class="admin-nav">
+            <a href="index.html" class="admin-nav-item">
+                <i class='bx bx-group'></i> User Management
+            </a>
+            <a href="compliance.html" class="admin-nav-item">
+                <i class='bx bx-check-shield'></i> Compliance Vault
+            </a>
+            <a href="logs.html" class="admin-nav-item active">
+                <i class='bx bx-file'></i> System Logs
+            </a>
+            <a href="settings.html" class="admin-nav-item">
+                <i class='bx bx-cog'></i> Admin Settings
+            </a>
+        </nav>
+
+        <div class="admin-sidebar-footer">
+            <a href="../auth/login.html" class="sign-out-btn">
+                <i class='bx bx-log-out'></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main View -->
+    <main class="admin-main">
+        <!-- Top Header -->
+        <header class="admin-topbar">
+            <h1 class="topbar-title">System Logs</h1>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search resources...">
+                </div>
+
+                <div class="notification-bell">
+                    <i class='bx bx-bell'></i>
+                    <span class="notification-dot"></span>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="admin-profile-text">
+                        <span class="admin-profile-name">Admin User</span>
+                        <span class="admin-profile-role">SUPER ADMIN</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=random&color=fff&rounded=true"
+                        alt="Admin" class="admin-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="admin-page-content">
+            <!-- Header Section -->
+            <div class="breadcrumbs text-muted mb-2 font-medium" style="font-size: 0.85rem;">
+                System Monitoring <i class='bx bx-chevron-right mx-1'></i> <span class="text-dark">Event Viewer</span>
+            </div>
+            <div class="page-header-row mb-4">
+                <h2 class="page-title" style="font-size: 1.75rem;">System Audit Logs</h2>
+                <div class="header-buttons">
+                    <button class="btn btn-outline"><i class='bx bx-refresh'></i> Refresh Feed</button>
+                    <button class="btn btn-primary"><i class='bx bx-download'></i> Export Logs</button>
+                </div>
+            </div>
+
+            <!-- KPI Grid (3 Columns) -->
+            <div class="kpi-grid-3">
+                <!-- Card 1 -->
+                <div class="log-kpi-card">
+                    <div class="log-kpi-badge">Last 24h</div>
+                    <div class="log-kpi-icon"><i class='bx bx-error-circle' style="color:var(--primary-color);"></i>
+                    </div>
+                    <div class="log-kpi-value">12</div>
+                    <div class="log-kpi-label">Critical Incidents</div>
+                    <div class="log-kpi-trend"><strong class="text-danger">-15.4%</strong> requiring attention</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="log-kpi-card">
+                    <div class="log-kpi-badge">Last 24h</div>
+                    <div class="log-kpi-icon"><i class='bx bx-pulse' style="color:var(--primary-color);"></i></div>
+                    <div class="log-kpi-value">124.5k</div>
+                    <div class="log-kpi-label">Total Events Logged</div>
+                    <div class="log-kpi-trend"><strong class="text-dark">+8.2%</strong> across all clusters</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="log-kpi-card">
+                    <div class="log-kpi-badge">Last 24h</div>
+                    <div class="log-kpi-icon"><i class='bx bx-check-shield' style="color:var(--primary-color);"></i>
+                    </div>
+                    <div class="log-kpi-value">99.98%</div>
+                    <div class="log-kpi-label">System Uptime</div>
+                    <div class="log-kpi-trend"><strong class="text-dark">+0.02%</strong> current cycle</div>
+                </div>
+            </div>
+
+            <!-- Event Stream Table -->
+            <div class="table-section mt-5">
+                <div class="table-toolbar bordered-bottom table-header-flex">
+                    <div class="table-title-left" style="align-items: flex-start;">
+                        <i class='bx bx-check-shield text-primary' style="margin-top: 0.15rem; font-size: 1.4rem;"></i>
+                        <div>
+                            <h3 class="section-title">Real-time Event Stream</h3>
+                            <p class="section-subtitle">Logs are automatically sanitized to remove PII and sensitive
+                                user data.</p>
+                        </div>
+                    </div>
+                    <div class="table-actions">
+                        <div class="table-search small-search">
+                            <i class='bx bx-search'></i>
+                            <input type="text" placeholder="Filter by ID or Summary...">
+                        </div>
+                        <button class="btn btn-outline btn-sm"><i class='bx bx-calendar'></i> Range</button>
+                        <button class="btn btn-outline btn-sm"><i class='bx bx-filter-alt'></i> Filters</button>
+                    </div>
+                </div>
+
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>TIMESTAMP <i class='bx bx-up-arrow-alt'></i><i class='bx bx-down-arrow-alt'
+                                    style="margin-left:-4px;color:var(--border-color);"></i></th>
+                            <th>EVENT TYPE</th>
+                            <th>COMPONENT</th>
+                            <th>SUMMARY</th>
+                            <th style="padding-right: 2.5rem; text-align: right;">SEVERITY</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Row 1 -->
+                        <tr>
+                            <td class="timestamp-col"><span>2023-11-24</span><span>14:22:01.032</span></td>
+                            <td><span class="event-type-badge">AUTH_LOGIN_SUCCESS</span></td>
+                            <td class="font-medium">IAM-Service</td>
+                            <td class="text-muted">Administrative login authorized via OAuth2</td>
+                            <td style="padding-right: 2.5rem; text-align: right;"><span class="badge-outline success"><i
+                                        class='bx bx-check-circle'></i> Success</span></td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr>
+                            <td class="timestamp-col"><span>2023-11-24</span><span>14:21:55.981</span></td>
+                            <td><span class="event-type-badge">API_RATE_LIMIT</span></td>
+                            <td class="font-medium">Edge-Gateway</td>
+                            <td class="text-muted">Internal service communication approaching</td>
+                            <td style="padding-right: 2.5rem; text-align: right;"><span class="badge-outline warning"><i
+                                        class='bx bx-error-circle'></i> Warning</span></td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr>
+                            <td class="timestamp-col"><span>2023-11-24</span><span>14:20:12.441</span></td>
+                            <td><span class="event-type-badge">DB_QUERY_ERROR</span></td>
+                            <td class="font-medium">Core-Database</td>
+                            <td class="text-muted">Connection pool timeout during batch</td>
+                            <td style="padding-right: 2.5rem; text-align: right;"><span class="badge-outline error"><i
+                                        class='bx bx-error'></i> Error</span></td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr>
+                            <td class="timestamp-col"><span>2023-11-24</span><span>14:18:33.110</span></td>
+                            <td><span class="event-type-badge">SYS_BACKUP_INIT</span></td>
+                            <td class="font-medium">Storage-Manager</td>
+                            <td class="text-muted">Automated nightly vault snapshot initialized.</td>
+                            <td style="padding-right: 2.5rem; text-align: right;"><span class="badge-outline info"><i
+                                        class='bx bx-info-circle'></i> Info</span></td>
+                        </tr>
+                        <!-- Row 5 -->
+                        <tr>
+                            <td class="timestamp-col"><span>2023-11-24</span><span>14:15:02.887</span></td>
+                            <td><span class="event-type-badge">POL_SYNC_COMPLETE</span></td>
+                            <td class="font-medium">Compliance-Engine</td>
+                            <td class="text-muted">Global policy definitions synchronized across</td>
+                            <td style="padding-right: 2.5rem; text-align: right;"><span class="badge-outline success"><i
+                                        class='bx bx-check-circle'></i> Success</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="table-footer">
+                    <div class="showing-text">Showing <strong>5</strong> of <strong>124,512</strong> events recorded in
+                        last 24h</div>
+                    <div class="pagination">
+                        <button class="page-btn page-prev disabled" style="opacity: 0.5;">Previous</button>
+                        <button class="page-btn page-next text-dark"
+                            style="border-color: var(--border-color); background: #fff;">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Banner -->
+            <div class="privacy-banner">
+                <div class="privacy-banner-icon"><i class='bx bx-check-shield'></i></div>
+                <div class="privacy-banner-content">
+                    <div class="privacy-banner-title">Data Privacy Enforcement</div>
+                    <div class="privacy-banner-text">
+                        The PerformX Admin log system automatically redacts all user-identifiable data (PII) before
+                        storage. Summaries represent aggregate<br>system behaviors and infrastructure events. Personal
+                        task descriptions, schedules, and project names are never visible in this<br>administrative
+                        view.
+                    </div>
+                </div>
+                <a href="#" class="privacy-banner-link">View Privacy Protocol</a>
+            </div>
+
+            <!-- Footer -->
+            <footer class="admin-footer">
+                &copy; 2026 PERFORMX ADMIN &bull; SECURE DATA ENVIRONMENT &bull; ISO 27001 COMPLIANT
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>
