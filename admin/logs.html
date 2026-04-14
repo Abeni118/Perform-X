@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX Admin — System Logs</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/modal.css">
+</head>
+<body>
+<div id="page-content">
+
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <!-- Sidebar -->
+  <aside id="performx-sidebar" class="sidebar closed">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo admin-brand">
+        <div class="logo-icon"><i class='bx bx-hive'></i></div>
+        <span class="brand-name">PerformX Admin</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="users.html" class="nav-item">
+        <i class='bx bx-group'></i> User Management
+      </a>
+      <a href="compliance.html" class="nav-item">
+        <i class='bx bx-check-shield'></i> Compliance Vault
+      </a>
+      <a href="logs.html" class="nav-item active">
+        <i class='bx bx-file'></i> System Logs
+      </a>
+      <a href="settings.html" class="nav-item">
+        <i class='bx bx-cog'></i> Admin Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../auth/login.html" class="nav-item">
+        <i class='bx bx-log-out'></i> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-controls="performx-sidebar" aria-label="Toggle sidebar" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true">☰</span>
+      </button>
+      <div style="font-weight: 600; font-size: 1.125rem;">System Logs</div>
+      <div class="search-bar" style="margin-right: auto; margin-left: 2rem;">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search resources...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action" id="adminLogsNotifyBtn">
+          <i class='bx bx-bell'></i>
+        </button>
+        <button class="icon-action" id="themeToggle">
+          <i class='bx bx-moon' id="themeIcon"></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name" id="topbar-user-name"></span>
+            <span class="user-role" id="topbar-user-role"></span>
+          </div>
+          <img src=""
+            alt="Admin" class="user-avatar" width="36" height="36">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header" style="align-items:flex-end;">
+        <div class="page-title">
+          <div style="font-size:0.75rem; color:#6B7280; font-weight:600; margin-bottom:0.5rem;">System Monitoring <i class='bx bx-chevron-right'></i> <span style="color:#111827;">Event Viewer</span></div>
+          <h1 style="font-size: 1.75rem;">System Audit Logs</h1>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-outline" id="adminLogsRefreshBtn" style="display:flex; align-items:center; gap:0.5rem;">
+            <i class='bx bx-refresh'></i> Refresh Feed
+          </button>
+          <button class="btn btn-primary" id="adminLogsExportBtn" style="display:flex; align-items:center; gap:0.5rem; background:#4F46E5; padding: 0.5rem 1.25rem;">
+            <i class='bx bx-download'></i> Export Logs
+          </button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="admin-stat-card" style="position:relative;">
+          <div style="position:absolute; top:1.5rem; right:1.5rem; border:1px solid #E5E7EB; padding:0.1rem 0.6rem; border-radius:999px; font-size:0.7rem; font-weight:600; color:#4B5563;">Last 24h</div>
+          <div class="stat-icon" style="width:32px; height:32px; border-radius:50%; background:#EEF2FF; color:#4F46E5; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;"><i class='bx bx-error-circle'></i></div>
+          <div class="stat-value" style="font-size: 2rem; margin-bottom:0.25rem;">12</div>
+          <div class="stat-label" style="font-size: 0.875rem; color:#4B5563; font-weight:600; margin-bottom:1rem;">Critical Incidents</div>
+          <div style="font-size:0.75rem; color:#6B7280;"><span style="color:#EF4444; font-weight:700;">-15.4%</span> requiring attention</div>
+        </div>
+
+        <div class="admin-stat-card" style="position:relative;">
+          <div style="position:absolute; top:1.5rem; right:1.5rem; border:1px solid #E5E7EB; padding:0.1rem 0.6rem; border-radius:999px; font-size:0.7rem; font-weight:600; color:#4B5563;">Last 24h</div>
+          <div class="stat-icon" style="width:32px; height:32px; border-radius:50%; background:#EEF2FF; color:#4F46E5; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;"><i class='bx bx-pulse'></i></div>
+          <div class="stat-value" style="font-size: 2rem; margin-bottom:0.25rem;">124.5k</div>
+          <div class="stat-label" style="font-size: 0.875rem; color:#4B5563; font-weight:600; margin-bottom:1rem;">Total Events Logged</div>
+          <div style="font-size:0.75rem; color:#6B7280;"><span style="color:#111827; font-weight:700;">+8.2%</span> across all clusters</div>
+        </div>
+
+        <div class="admin-stat-card" style="position:relative;">
+          <div style="position:absolute; top:1.5rem; right:1.5rem; border:1px solid #E5E7EB; padding:0.1rem 0.6rem; border-radius:999px; font-size:0.7rem; font-weight:600; color:#4B5563;">Last 24h</div>
+          <div class="stat-icon" style="width:32px; height:32px; border-radius:50%; background:#EEF2FF; color:#4F46E5; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;"><i class='bx bx-check-shield'></i></div>
+          <div class="stat-value" style="font-size: 2rem; margin-bottom:0.25rem;">99.98%</div>
+          <div class="stat-label" style="font-size: 0.875rem; color:#4B5563; font-weight:600; margin-bottom:1rem;">System Uptime</div>
+          <div style="font-size:0.75rem; color:#6B7280;"><span style="color:#111827; font-weight:700;">+0.02%</span> current cycle</div>
+        </div>
+      </div>
+
+      <!-- Logs Table Section -->
+      <div class="table-card" style="padding: 1.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; border-bottom:1px solid #F3F4F6; padding-bottom:1.5rem; margin-bottom:1rem;">
+          <div>
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; display:flex; align-items:center; gap:0.5rem; color:#111827;">
+              <i class='bx bx-check-shield' style="color:#4F46E5;"></i> Real-time Event Stream
+            </h3>
+            <p style="font-size: 0.875rem; color: #6B7280;">Logs are automatically sanitized to remove PII and sensitive user data.</p>
+          </div>
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <div class="search-bar" style="width:min(240px, 100%); background:#FFFFFF; border: 1px solid #E5E7EB; border-radius:8px;">
+              <i class='bx bx-search'></i>
+              <input id="adminLogsSearch" type="text" placeholder="Filter by ID or Summary...">
+            </div>
+            <button class="btn btn-outline" id="adminLogsRangeBtn" style="display:flex; align-items:center; gap:0.5rem;"><i class='bx bx-calendar'></i> Range</button>
+            <button class="btn btn-outline" id="adminLogsFilterBtn" style="display:flex; align-items:center; gap:0.5rem;"><i class='bx bx-filter'></i> Filters</button>
+          </div>
+        </div>
+
+        <table class="task-table" id="adminLogsTable">
+          <thead>
+            <tr>
+              <th style="padding-left:0; font-size:0.75rem; letter-spacing:0.05em; color:#6B7280;">TIMESTAMP <i class='bx bx-sort-alt-2'></i></th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280;">EVENT TYPE</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280;">COMPONENT</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280;">SUMMARY</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280; text-align:right;">SEVERITY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding-left:0;">
+                <div style="font-size:0.875rem; color:#111827; font-weight:500;">2023-11-24</div>
+                <div style="font-size:0.75rem; color:#6B7280;">14:22:01.032</div>
+              </td>
+              <td><span style="font-size:0.8rem; font-weight:700; letter-spacing:0.05em; color:#111827;">AUTH_LOGIN_SUCCESS</span></td>
+              <td style="font-weight:600; font-size:0.875rem; color:#111827;">IAM-Service</td>
+              <td style="color:#4B5563; font-size:0.875rem;">Administrative login authorized via OAuth2</td>
+              <td style="text-align:right;"><span class="pill pill-outline" style="display:inline-flex; align-items:center; gap:0.25rem;"><i class='bx bx-check-circle' style="color:#10B981; font-size:1rem;"></i> Success</span></td>
+            </tr>
+            <tr>
+              <td style="padding-left:0;">
+                <div style="font-size:0.875rem; color:#111827; font-weight:500;">2023-11-24</div>
+                <div style="font-size:0.75rem; color:#6B7280;">14:21:55.981</div>
+              </td>
+              <td><span style="font-size:0.8rem; font-weight:700; letter-spacing:0.05em; color:#111827;">API_RATE_LIMIT</span></td>
+              <td style="font-weight:600; font-size:0.875rem; color:#111827;">Edge-Gateway</td>
+              <td style="color:#4B5563; font-size:0.875rem;">Internal service communication approaching</td>
+              <td style="text-align:right;"><span class="pill pill-outline" style="display:inline-flex; align-items:center; gap:0.25rem;"><i class='bx bx-error-circle' style="color:#6B7280; font-size:1rem;"></i> Warning</span></td>
+            </tr>
+            <tr>
+              <td style="padding-left:0;">
+                <div style="font-size:0.875rem; color:#111827; font-weight:500;">2023-11-24</div>
+                <div style="font-size:0.75rem; color:#6B7280;">14:20:12.441</div>
+              </td>
+              <td><span style="font-size:0.8rem; font-weight:700; letter-spacing:0.05em; color:#111827;">DB_QUERY_ERROR</span></td>
+              <td style="font-weight:600; font-size:0.875rem; color:#111827;">Core-Database</td>
+              <td style="color:#4B5563; font-size:0.875rem;">Connection pool timeout during batch</td>
+              <td style="text-align:right;"><span class="pill" style="background:#FEE2E2; color:#EF4444; border:1px solid #FECACA; display:inline-flex; align-items:center; gap:0.25rem;"><i class='bx bx-error' style="color:#EF4444; font-size:1rem;"></i> Error</span></td>
+            </tr>
+            <tr>
+              <td style="padding-left:0;">
+                <div style="font-size:0.875rem; color:#111827; font-weight:500;">2023-11-24</div>
+                <div style="font-size:0.75rem; color:#6B7280;">14:18:33.110</div>
+              </td>
+              <td><span style="font-size:0.8rem; font-weight:700; letter-spacing:0.05em; color:#111827;">SYS_BACKUP_INIT</span></td>
+              <td style="font-weight:600; font-size:0.875rem; color:#111827;">Storage-Manager</td>
+              <td style="color:#4B5563; font-size:0.875rem;">Automated nightly vault snapshot initialized.</td>
+              <td style="text-align:right;"><span class="pill pill-outline" style="display:inline-flex; align-items:center; gap:0.25rem;"><i class='bx bx-info-circle' style="color:#6B7280; font-size:1rem;"></i> Info</span></td>
+            </tr>
+            <tr>
+              <td style="padding-left:0;">
+                <div style="font-size:0.875rem; color:#111827; font-weight:500;">2023-11-24</div>
+                <div style="font-size:0.75rem; color:#6B7280;">14:15:02.887</div>
+              </td>
+              <td><span style="font-size:0.8rem; font-weight:700; letter-spacing:0.05em; color:#111827;">POL_SYNC_COMPLETE</span></td>
+              <td style="font-weight:600; font-size:0.875rem; color:#111827;">Compliance-Engine</td>
+              <td style="color:#4B5563; font-size:0.875rem;">Global policy definitions synchronized across</td>
+              <td style="text-align:right;"><span class="pill pill-outline" style="display:inline-flex; align-items:center; gap:0.25rem;"><i class='bx bx-check-circle' style="color:#10B981; font-size:1rem;"></i> Success</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Table Footer -->
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:1.5rem; margin-top:1rem; border-top:1px solid #F3F4F6;">
+          <div style="font-size:0.875rem; color:#6B7280;">Showing <strong style="color:#111827;">5</strong> of <strong style="color:#111827;">124,512</strong> events recorded in last 24h</div>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-outline" id="adminLogsPrevBtn" style="padding:0.4rem 0.8rem; font-size:0.875rem;">Previous</button>
+            <button class="btn btn-outline" id="adminLogsNextBtn" style="padding:0.4rem 0.8rem; font-size:0.875rem;">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Banner -->
+      <div style="background:#EEF2FF; border:1px solid #E0E7FF; padding:1.5rem; border-radius:12px; display:flex; gap:1.5rem; align-items:flex-start; flex-wrap:wrap; margin-top:1.5rem;">
+        <div style="width:40px; height:40px; border-radius:50%; background:#E0E7FF; color:#4F46E5; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0;">
+          <i class='bx bx-check-shield'></i>
+        </div>
+        <div style="flex:1;">
+          <h4 style="font-size:0.95rem; font-weight:700; color:#4F46E5; margin-bottom:0.25rem;">Data Privacy Enforcement</h4>
+          <p style="font-size:0.875rem; color:#4F46E5; line-height:1.5;">The PerformX Admin log system automatically redacts all user-identifiable data (PII) before storage. Summaries represent aggregate system behaviors and infrastructure events. Personal task descriptions, schedules, and project names are never visible in this administrative view.</p>
+        </div>
+        <div style="white-space:normal; padding-top:0.25rem; margin-left:auto;">
+          <a href="#" id="adminLogsPrivacyLink" style="font-size:0.875rem; font-weight:700; color:#4F46E5; text-decoration:none;">View Privacy Protocol</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="text-align:center; justify-content:center; text-transform:uppercase; font-size:0.7rem; font-weight:600; border-top: 1px solid #E5E7EB; padding-bottom:1.5rem; margin-top:2rem;">
+      <div>&copy; 2026 PERFORMX ADMIN • SECURE DATA ENVIRONMENT • ISO 27001 COMPLIANT</div>
+    </footer>
+
+  </main>
+
+  <script src="../assets/js/api-config.js"></script>
+  <script src="../assets/js/protect.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/modal.js"></script>
+  <script src="../assets/js/admin-shared.js"></script>
+  <script src="../assets/js/admin-logs.js"></script>
+</div>
+</body>
+</html>

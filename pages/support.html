@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX - Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/modal.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/legal-pages.css">
+</head>
+<body>
+<div id="page-content" class="legal-page">
+
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <!-- Sidebar -->
+  <aside id="performx-sidebar" class="sidebar closed">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo">
+        <div class="logo-icon"><i class='bx bx-pulse'></i></div>
+        <span class="brand-name">PerformX</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">
+        <i class='bx bx-grid-alt'></i> Dashboard
+      </a>
+      <a href="task.html" class="nav-item">
+        <i class='bx bx-check-square'></i> Tasks
+      </a>
+      <a href="report.html" class="nav-item">
+        <i class='bx bx-bar-chart-alt-2'></i> Reports
+      </a>
+      <a href="team.html" class="nav-item">
+        <i class='bx bx-group'></i> Team
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../auth/login.html" class="nav-item nav-item-danger">
+        <i class='bx bx-log-out'></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-controls="performx-sidebar" aria-label="Toggle sidebar" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true">+</span>
+      </button>
+      <div class="search-bar">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action">
+          <i class='bx bx-bell'></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-action" id="themeToggle">
+          <i class='bx bx-moon' id="themeIcon"></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name" id="topbar-user-name"></span>
+            <span class="user-role" id="topbar-user-role"></span>
+          </div>
+          <img src=""
+            alt="" class="user-avatar">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Support Center</h1>
+          <p>Get help with PerformX or contact our support team.</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="chart-card">
+        <div class="card-title-row">
+          <div>
+            <h3>Contact Support</h3>
+            <p>Send us a message and we'll get back to you soon.</p>
+          </div>
+        </div>
+        <div class="support-form">
+          <form id="supportForm">
+            <div class="form-group">
+              <label for="supportName" class="form-label">Name</label>
+              <input type="text" id="supportName" name="name" required class="form-input">
+            </div>
+            
+            <div class="form-group">
+              <label for="supportEmail" class="form-label">Email</label>
+              <input type="email" id="supportEmail" name="email" required class="form-input">
+            </div>
+            
+            <div class="form-group">
+              <label for="supportMessage" class="form-label">Message</label>
+              <textarea id="supportMessage" name="message" rows="5" required class="form-textarea"></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit">
+              <i class='bx bx-send'></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Quick Help -->
+      <div class="chart-card">
+        <div class="card-title-row">
+          <div>
+            <h3>Quick Help</h3>
+            <p>Common questions and resources.</p>
+          </div>
+        </div>
+        <div class="help-section">
+          <div class="faq-item">
+            <div class="faq-question">How do I reset my password?</div>
+            <div class="faq-answer">Click "Forgot Password" on the login page or contact support for assistance.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I export my data?</div>
+            <div class="faq-answer">Yes, go to Reports page and use the Export Data feature.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Is my data secure?</div>
+            <div class="faq-answer">Yes, we use industry-standard encryption and security measures.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="chart-card">
+        <div class="card-title-row">
+          <div>
+            <h3>Direct Contact</h3>
+            <p>Other ways to reach us.</p>
+          </div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <h4><i class='bx bx-envelope'></i> Email Support</h4>
+            <p>
+              <a href="mailto:support@performx.com">support@performx.com</a>
+            </p>
+            <p>Response time: 24-48 hours</p>
+          </div>
+          <div class="contact-item">
+            <h4><i class='bx bx-time'></i> Business Hours</h4>
+            <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+            <p>Weekend: Limited support</p>
+          </div>
+        </div>
+        
+        <div class="emergency-notice">
+          <p>
+            <strong>Emergency Support:</strong> For urgent issues affecting your entire team, mark your email as "URGENT" in the subject line.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>&copy; 2026 PerformX. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+  </main>
+  
+  <script src="../assets/js/api-config.js"></script>
+  <script src="../assets/js/shared.js"></script>
+  <script src="../assets/js/protect.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/modal.js"></script>
+  <script>
+    // Simple form handling (UI only)
+    document.getElementById('supportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('supportName').value;
+      const email = document.getElementById('supportEmail').value;
+      const message = document.getElementById('supportMessage').value;
+      
+      // Show success message
+      if (window.S && window.S.toast) {
+        window.S.toast('Thank you! Your message has been sent. We will respond within 24-48 hours.', 'success');
+      } else {
+        alert('Thank you! Your message has been sent. We will respond within 24-48 hours.');
+      }
+      
+      // Clear form
+      document.getElementById('supportForm').reset();
+      
+      // Log for demonstration (in real app, this would send to backend)
+      console.log('Support form submitted:', { name, email, message });
+    });
+  </script>
+</div>
+</body>
+</html>

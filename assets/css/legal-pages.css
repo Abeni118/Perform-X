@@ -1,0 +1,336 @@
+/* =====================================================
+   LEGAL PAGES - SCOPED CSS ONLY
+   =====================================================
+   This CSS is completely scoped to .legal-page class
+   and will NOT affect any other pages in the system.
+   ===================================================== */
+
+/* Legal Page Container - Scoped Only */
+.legal-page .page-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Legal Page Content Styling - Scoped */
+
+.legal-page .chart-card {
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  border: 1px solid #F3F4F6;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.legal-page .chart-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.legal-page .card-title-row h3 {
+  color: #111827;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.legal-page .card-title-row p {
+  color: #6B7280;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Content Sections - Scoped */
+.legal-page .legal-content {
+  padding: 0 1.75rem 1.75rem 1.75rem;
+  line-height: 1.6;
+}
+
+.legal-page .legal-content p {
+  color: #111827;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.legal-page .legal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.legal-page .legal-content li {
+  color: #111827;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.legal-page .legal-content li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: #4F46E5;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.legal-page .legal-content strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.legal-page .legal-content a {
+  color: #4F46E5;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.legal-page .legal-content a:hover {
+  border-bottom-color: #4F46E5;
+}
+
+/* Support Form Styling - Scoped */
+.legal-page .support-form {
+  padding: 0 1.75rem 1.75rem 1.75rem;
+}
+
+.legal-page .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.legal-page .form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.legal-page .form-input,
+.legal-page .form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #111827;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.legal-page .form-input:focus,
+.legal-page .form-textarea:focus {
+  outline: none;
+  border-color: #4F46E5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.legal-page .form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.legal-page .form-submit {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: #4F46E5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.legal-page .form-submit:hover {
+  background: #4338CA;
+  transform: translateY(-1px);
+}
+
+.legal-page .form-submit:active {
+  transform: translateY(0);
+}
+
+/* Quick Help Section - Scoped */
+.legal-page .help-section {
+  padding: 0 1.75rem 1.75rem 1.75rem;
+}
+
+.legal-page .faq-item {
+  background: #FFFFFF;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #E5E7EB;
+}
+
+.legal-page .faq-question {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.legal-page .faq-answer {
+  color: #6B7280;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Contact Info Section - Scoped */
+.legal-page .contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 0 1.75rem 1.75rem 1.75rem;
+}
+
+.legal-page .contact-item h4 {
+  color: #111827;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legal-page .contact-item p {
+  color: #6B7280;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.legal-page .contact-item a {
+  color: #4F46E5;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.legal-page .contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* Emergency Notice - Scoped */
+.legal-page .emergency-notice {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #E0E7FF;
+  border-radius: 8px;
+  border-left: 4px solid #4F46E5;
+  padding: 0 1.75rem 1.75rem 1.75rem;
+}
+
+.legal-page .emergency-notice p {
+  color: #111827;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive Design - Scoped */
+@media (max-width: 768px) {
+  .legal-page .page-wrapper {
+    padding: 0 0.5rem;
+  }
+  
+  .legal-page .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .legal-page .legal-content {
+    padding: 0 1rem 1.5rem 1rem;
+  }
+  
+  .legal-page .support-form {
+    padding: 0 1rem 1.5rem 1rem;
+  }
+  
+  .legal-page .help-section {
+    padding: 0 1rem 1.5rem 1rem;
+  }
+  
+  .legal-page .contact-grid {
+    padding: 0 1rem 1.5rem 1rem;
+  }
+  
+  .legal-page .emergency-notice {
+    padding: 1rem;
+  }
+}
+
+/* Dark Mode Support - Scoped */
+body.dark-mode .legal-page .chart-card {
+  background: #1A1A24;
+  border-color: #272836;
+}
+
+body.dark-mode .legal-page .faq-item {
+  background: #1A1A24;
+  border-color: #272836;
+}
+
+body.dark-mode .legal-page .form-input,
+body.dark-mode .legal-page .form-textarea {
+  background: #222332;
+  border-color: #272836;
+  color: #E2E8F0;
+}
+
+body.dark-mode .legal-page .form-label {
+  color: #F8FAFC;
+}
+
+body.dark-mode .legal-page .card-title-row h3 {
+  color: #F8FAFC;
+}
+
+body.dark-mode .legal-page .card-title-row p {
+  color: #94A3B8;
+}
+
+body.dark-mode .legal-page .legal-content p,
+body.dark-mode .legal-page .legal-content li,
+body.dark-mode .legal-page .legal-content strong {
+  color: #E2E8F0;
+}
+
+body.dark-mode .legal-page .faq-question {
+  color: #F8FAFC;
+}
+
+body.dark-mode .legal-page .faq-answer {
+  color: #94A3B8;
+}
+
+body.dark-mode .legal-page .contact-item h4 {
+  color: #F8FAFC;
+}
+
+body.dark-mode .legal-page .contact-item p {
+  color: #94A3B8;
+}
+
+body.dark-mode .legal-page .emergency-notice {
+  background: rgba(79, 70, 229, 0.15);
+}
+
+body.dark-mode .legal-page .emergency-notice p {
+  color: #F8FAFC;
+}
+
+/* =====================================================
+   END OF LEGAL PAGES CSS
+   =====================================================
+   All styles are scoped to .legal-page class only
+   No global styles were modified
+   ===================================================== */

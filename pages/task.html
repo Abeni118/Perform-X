@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX — Tasks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/modal.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/saas-modern.css">
+</head>
+<body>
+<div id="page-content">
+
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <!-- Sidebar -->
+  <aside id="performx-sidebar" class="sidebar closed">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo">
+        <div class="logo-icon"><i class='bx bx-pulse'></i></div>
+        <span class="brand-name">PerformX</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">
+        <i class='bx bx-grid-alt'></i> Dashboard
+      </a>
+      <a href="task.html" class="nav-item active">
+        <i class='bx bx-check-square'></i> Tasks
+      </a>
+      <a href="report.html" class="nav-item">
+        <i class='bx bx-bar-chart-alt-2'></i> Reports
+      </a>
+      <a href="team.html" class="nav-item">
+        <i class='bx bx-user-circle'></i> Team
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../auth/login.html" class="nav-item nav-item-danger">
+        <i class='bx bx-log-out'></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-controls="performx-sidebar" aria-label="Toggle sidebar" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true">☰</span>
+      </button>
+      <div class="search-bar">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search performance...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action">
+          <i class='bx bx-bell'></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-action" id="themeToggle">
+          <i class='bx bx-moon' id="themeIcon"></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name" id="topbar-user-name"></span>
+            <span class="user-role" id="topbar-user-role"></span>
+          </div>
+          <img src=""
+            alt="" class="user-avatar">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Task Manager</h1>
+          <p>Manage and track your daily operational performance.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-outline" id="btnTaskFilterCategory" style="display:flex;align-items:center;gap:0.5rem;">
+            <i class='bx bx-filter'></i> All Categories
+          </button>
+          <div class="date-navigator" style="display:flex;align-items:center;gap:0.25rem;">
+            <button class="btn btn-outline" id="prev-day-btn" style="padding:0.5rem;"><i class='bx bx-chevron-left'></i></button>
+            <button class="btn btn-outline" style="display:flex;align-items:center;gap:0.5rem;min-width:180px;justify-content:center;pointer-events:none;">
+              <i class='bx bx-calendar'></i> <span id="current-day">Monday, April 1</span>
+            </button>
+            <button class="btn btn-outline" id="next-day-btn" style="padding:0.5rem;"><i class='bx bx-chevron-right'></i></button>
+          </div>
+          <button class="btn btn-primary" id="btnAddTask" style="display:flex;align-items:center;gap:0.5rem;">
+            <i class='bx bx-plus-circle'></i> Add Task
+          </button>
+        </div>
+      </div>
+
+      <!-- Table Section -->
+      <div class="table-card">
+        <table class="task-table">
+          <thead>
+            <tr>
+              <th>Task Title</th>
+              <th>Category</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Time Window</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="task-list">
+            <!-- Dynamically populated by task.js -->
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination-bar">
+          <div>Showing 5 of 24 tasks</div>
+          <div class="page-controls">
+            <button class="page-btn">Previous</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Cards -->
+      <div class="summary-cards">
+
+        <div class="summary-card purple-deep">
+          <div class="card-icon"><i class='bx bx-check-circle'></i></div>
+          <h3 class="card-title">Task Completion Rate</h3>
+          <p class="card-desc">You completed 12% more tasks this week compared to last.</p>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 78%;"></div>
+            </div>
+            <span class="progress-value">78%</span>
+          </div>
+        </div>
+
+        <div class="summary-card purple-light">
+          <div class="card-icon"><i class='bx bx-time'></i></div>
+          <h3 class="card-title">Average Focus Time</h3>
+          <p class="card-desc">Your focus duration is currently 2.4h per high-priority task.</p>
+          <a href="#" id="linkTaskBreakdown" class="card-link">View breakdown &rarr;</a>
+        </div>
+
+        <div class="summary-card dashed">
+          <div class="card-icon"><i class='bx bx-plus'></i></div>
+          <p class="card-desc">Quick-assign a teammate to a delayed task</p>
+          <button class="btn btn-outline" id="btnAssignNow" style="font-weight: 500;">Assign Now</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>&copy; 2026 PerformX. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+  </main>
+  
+  <script src="../assets/js/api-config.js"></script>
+  <script src="../assets/js/protect.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/modal.js"></script>
+  <script src="../assets/js/shared.js"></script>
+  <script src="../assets/js/task.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API URL Test</h1>
+    <button onclick="testApiUrl()">Test API URL</button>
+    <button onclick="testLogin()">Test Login</button>
+    <div id="results"></div>
+
+    <script src="./assets/js/api-config.js"></script>
+    <script>
+        function testApiUrl() {
+            const url = window.apiUrl('auth/login.php');
+            document.getElementById('results').innerHTML = `
+                <h3>API URL Test</h3>
+                <p><strong>Generated URL:</strong> ${url}</p>
+                <p><strong>Current Origin:</strong> ${window.location.origin}</p>
+                <p><strong>Current Path:</strong> ${window.location.pathname}</p>
+            `;
+        }
+
+        async function testLogin() {
+            const url = window.apiUrl('auth/login.php');
+            const testData = {
+                email: 'test@example.com',
+                password: 'test123'
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(testData)
+                });
+
+                const result = await response.json();
+                document.getElementById('results').innerHTML = `
+                    <h3>Login Test</h3>
+                    <p><strong>URL:</strong> ${url}</p>
+                    <p><strong>Status:</strong> ${response.status}</p>
+                    <p><strong>Response:</strong> <pre>${JSON.stringify(result, null, 2)}</pre></p>
+                `;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `
+                    <h3>Login Test Error</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

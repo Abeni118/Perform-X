@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX Admin — Settings</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/modal.css">
+</head>
+<body>
+<div id="page-content">
+
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <!-- Sidebar -->
+  <aside id="performx-sidebar" class="sidebar closed">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo admin-brand">
+        <div class="logo-icon"><i class='bx bx-hive'></i></div>
+        <span class="brand-name">PerformX Admin</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="users.html" class="nav-item">
+        <i class='bx bx-group'></i> User Management
+      </a>
+      <a href="compliance.html" class="nav-item">
+        <i class='bx bx-check-shield'></i> Compliance Vault
+      </a>
+      <a href="logs.html" class="nav-item">
+        <i class='bx bx-file'></i> System Logs
+      </a>
+      <a href="settings.html" class="nav-item active">
+        <i class='bx bx-cog'></i> Admin Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../auth/login.html" class="nav-item">
+        <i class='bx bx-log-out'></i> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-controls="performx-sidebar" aria-label="Toggle sidebar" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true">☰</span>
+      </button>
+      <div style="font-weight: 600; font-size: 1.125rem;">Admin Settings</div>
+      <div class="search-bar" style="margin-right: auto; margin-left: 2rem;">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search resources...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action" id="adminSettingsNotifyBtn">
+          <i class='bx bx-bell'></i>
+        </button>
+        <button class="icon-action" id="themeToggle">
+          <i class='bx bx-moon' id="themeIcon"></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name" id="topbar-user-name"></span>
+            <span class="user-role" id="topbar-user-role"></span>
+          </div>
+          <img src=""
+            alt="Admin" class="user-avatar" width="36" height="36">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>System Configuration</h1>
+          <p>Manage global security, access levels, and infrastructure settings.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn" id="adminSettingsAuditBtn">
+            Download Audit Report
+          </button>
+          <button class="btn btn-primary" id="adminSettingsSaveBtn">
+            <i class='bx bx-save'></i> Save All Changes
+          </button>
+        </div>
+      </div>
+
+      <!-- Settings Grid -->
+      <div class="settings-grid">
+        
+        <!-- Left Column -->
+        <div>
+          <!-- Security Governance -->
+          <div class="settings-card">
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; display:flex; align-items:center; gap:0.5rem;">
+              <i class='bx bx-lock-alt' style="color:#4F46E5;"></i> Security Governance
+            </h3>
+            <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 2rem;">Configure authentication requirements and password policies.</p>
+
+            <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+              <div>
+                <h4 style="font-size:0.95rem; font-weight:600; color:#111827; margin-bottom:0.25rem;">Enforce Multi-Factor Authentication (MFA)</h4>
+                <p style="font-size:0.875rem; color:#4F46E5;">Require MFA for all administrative account logins.</p>
+              </div>
+              <div class="toggle-switch active"></div>
+            </div>
+
+            <div class="slider-container">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span style="font-size:0.95rem; font-weight:600; color:#111827;">Minimum Password Complexity Score</span>
+                <span style="background: #EEF2FF; color: #4F46E5; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;">75%</span>
+              </div>
+              
+              <!-- Dummy visual slider to match design -->
+              <div style="position:relative; width:100%; height:6px; background:#E5E7EB; border-radius:999px;">
+                <div style="position:absolute; left:0; top:0; height:100%; width:75%; background:#4F46E5; border-radius:999px;"></div>
+                <div style="position:absolute; left:75%; top:-7px; width:20px; height:20px; background:white; border:2px solid #4F46E5; border-radius:50%; margin-left:-10px; cursor:pointer;"></div>
+              </div>
+              <div class="slider-labels">
+                <span>STANDARD</span>
+                <span style="margin-left: 20%;">STRICT</span>
+                <span>ENTERPRISE GRADE</span>
+              </div>
+            </div>
+
+            <div class="input-grid" style="margin-bottom: 2rem;">
+              <div>
+                <label style="display:block; font-size:0.75rem; font-weight:700; color:#4B5563; margin-bottom:0.5rem; text-transform:uppercase;">SESSION TIMEOUT (MIN)</label>
+                <input type="text" id="adminSessionTimeout" class="admin-input" value="30">
+              </div>
+              <div>
+                <label style="display:block; font-size:0.75rem; font-weight:700; color:#4B5563; margin-bottom:0.5rem; text-transform:uppercase;">LOGIN ATTEMPT LIMIT</label>
+                <input type="text" id="adminLoginAttempts" class="admin-input" value="5">
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F3F4F6; padding-top: 1.5rem; font-size: 0.75rem;">
+              <span style="color: #9CA3AF;">Last updated: Oct 24, 2023 by System</span>
+              <a href="#" id="adminSettingsUpdateLogsLink" style="color: #4F46E5; text-decoration: none; font-weight: 500;">Update Security Logs</a>
+            </div>
+          </div>
+
+          <!-- Access Controls (RBAC) -->
+          <div class="settings-card">
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; display:flex; align-items:center; gap:0.5rem;">
+              <i class='bx bx-group' style="color:#4F46E5;"></i> Access Controls (RBAC)
+            </h3>
+            <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.5rem;">Manage administrative roles and functional permissions mapping.</p>
+
+            <div class="table-card" style="border:none; box-shadow:none; margin-bottom: 1.5rem;">
+              <table id="adminRbacTable" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                  <tr>
+                    <th style="text-align:left; font-size:0.875rem; color:#4B5563; font-weight:600; padding-bottom:1rem; border-bottom:1px solid #F3F4F6;">Role Name</th>
+                    <th style="text-align:left; font-size:0.875rem; color:#4B5563; font-weight:600; padding-bottom:1rem; border-bottom:1px solid #F3F4F6;">Primary Permissions</th>
+                    <th style="text-align:right; font-size:0.875rem; color:#4B5563; font-weight:600; padding-bottom:1rem; border-bottom:1px solid #F3F4F6;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6;">
+                    <div style="font-size:0.95rem; font-weight:600; color:#111827; margin-bottom:0.25rem;">Super Admin</div>
+                    <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; color:#6B7280;">GLOBAL SCOPE</div>
+                  </td>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6;">
+                    <span style="background: #F3F4F6; color: #4B5563; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Full System Access</span>
+                  </td>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6; text-align:right;">
+                    <i class='bx bx-chevron-right' style="color:#9CA3AF; cursor:pointer;"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6;">
+                    <div style="font-size:0.95rem; font-weight:600; color:#111827; margin-bottom:0.25rem;">Compliance Officer</div>
+                    <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; color:#6B7280;">GOVERNANCE SCOPE</div>
+                  </td>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6;">
+                    <span style="background: #F3F4F6; color: #4B5563; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Vault Access, Audit Logs</span>
+                  </td>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6; text-align:right;">
+                    <i class='bx bx-chevron-right' style="color:#9CA3AF; cursor:pointer;"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6;">
+                    <div style="font-size:0.95rem; font-weight:600; color:#111827; margin-bottom:0.25rem;">System Analyst</div>
+                    <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; color:#6B7280;">LIMITED SCOPE</div>
+                  </td>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6;">
+                    <span style="background: #F3F4F6; color: #4B5563; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Read-only Logs, Monitoring</span>
+                  </td>
+                  <td style="padding: 1rem 0; border-bottom: 1px solid #F3F4F6; text-align:right;">
+                    <i class='bx bx-chevron-right' style="color:#9CA3AF; cursor:pointer;"></i>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <button class="btn-block" id="adminAddRoleBtn" style="width:100%; padding:0.75rem; background:none; border: 1px dashed #D1D5DB; border-radius: 8px; font-weight: 600; font-size: 0.875rem; color: #6B7280; cursor: pointer;">
+              + Define New Administrative Role
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div>
+          <!-- System Maintenance -->
+          <div class="settings-card">
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; display:flex; align-items:center; gap:0.5rem;">
+              <i class='bx bx-wrench' style="color:#4F46E5;"></i> System Maintenance
+            </h3>
+            <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.5rem;">Control system availability and data recovery operations.</p>
+
+            <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span style="font-size:0.95rem; font-weight:600; color:#92400E; display:flex; align-items:center; gap:0.5rem;"><i class='bx bx-error-alt'></i> Maintenance Mode</span>
+                <div class="toggle-switch"></div>
+              </div>
+              <p style="font-size:0.75rem; color:#92400E; line-height:1.5;">Enabling this will restrict all non-admin access to the application. A "System Down for Maintenance" screen will be displayed to users.</p>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <span style="font-size:0.875rem; font-weight:600; color:#111827;">Automatic Backups</span>
+              <span style="background: #F3F4F6; color: #4B5563; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Daily @ 02:00 UTC</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; margin-bottom: 1.5rem;">
+              <button class="btn btn-outline" id="adminVaultBackupBtn" style="padding:0.75rem; font-size:0.875rem; display:flex; align-items:center; justify-content:center; gap:0.5rem;"><i class='bx bx-server'></i> Vault Backup</button>
+              <button class="btn btn-outline" id="adminRestorePointBtn" style="padding:0.75rem; font-size:0.875rem; display:flex; align-items:center; justify-content:center; gap:0.5rem;"><i class='bx bx-refresh'></i> Restore Point</button>
+            </div>
+
+            <div style="font-size:0.75rem; color:#9CA3AF; border-top: 1px solid #F3F4F6; padding-top: 1rem; display:flex; align-items:center; gap:0.5rem;">
+              <i class='bx bx-info-circle'></i> Last full backup completed 4 hours ago.
+            </div>
+          </div>
+
+          <!-- Global Integrations -->
+          <div class="settings-card">
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; display:flex; align-items:center; gap:0.5rem;">
+              <i class='bx bx-shape-circle' style="color:#4F46E5;"></i> Global Integrations
+            </h3>
+            <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.5rem;">Connect PerformX to external identity and logging providers.</p>
+
+            <div class="integration-item">
+              <div style="display:flex; align-items:center;">
+                <div class="int-icon"><i class='bx bx-shield-alt-2'></i></div>
+                <div>
+                  <div style="font-size:0.95rem; font-weight:600; color:#111827;">Okta SSO</div>
+                  <div style="font-size:0.65rem; font-weight:700; text-transform:uppercase; color:#9CA3AF; letter-spacing:0.05em;">AUTHENTICATION</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:1rem;">
+                <span class="pill pill-outline" style="color:#111827;">Enabled</span>
+                <i class='bx bx-link-external' style="color:#9CA3AF; cursor:pointer;"></i>
+              </div>
+            </div>
+
+            <div class="integration-item">
+              <div style="display:flex; align-items:center;">
+                <div class="int-icon"><i class='bx bx-refresh'></i></div>
+                <div>
+                  <div style="font-size:0.95rem; font-weight:600; color:#111827;">Datadog</div>
+                  <div style="font-size:0.65rem; font-weight:700; text-transform:uppercase; color:#9CA3AF; letter-spacing:0.05em;">MONITORING</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:1rem;">
+                <span class="pill pill-outline">Disabled</span>
+                <i class='bx bx-link-external' style="color:#9CA3AF; cursor:pointer;"></i>
+              </div>
+            </div>
+
+            <div class="integration-item" style="border-bottom:none; margin-bottom:1rem;">
+              <div style="display:flex; align-items:center;">
+                <div class="int-icon"><i class='bx bx-data'></i></div>
+                <div>
+                  <div style="font-size:0.95rem; font-weight:600; color:#111827;">AWS S3</div>
+                  <div style="font-size:0.65rem; font-weight:700; text-transform:uppercase; color:#9CA3AF; letter-spacing:0.05em;">STORAGE</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:1rem;">
+                <span class="pill pill-outline" style="color:#111827;">Enabled</span>
+                <i class='bx bx-link-external' style="color:#9CA3AF; cursor:pointer;"></i>
+              </div>
+            </div>
+
+            <a href="#" id="adminIntegrationMarketplaceLink" style="font-size:0.875rem; color:#4F46E5; text-decoration:none; font-weight:600;">View Integration Marketplace</a>
+          </div>
+
+          <!-- Accordion -->
+          <div class="accordion-item" style="background:#FFFFFF; padding:1.25rem;">
+            <div style="display:flex; align-items:center; gap:0.5rem; color:#111827; font-size:1rem;">
+              <i class='bx bx-shield'></i> Regulatory Compliance Logs
+            </div>
+            <i class='bx bx-chevron-down' style="color:#9CA3AF; font-size:1.25rem;"></i>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="text-align:center; justify-content:center; text-transform:uppercase; font-size:0.7rem; font-weight:600; border-top: 1px solid #E5E7EB; padding-bottom:1.5rem;">
+      <div>&copy; 2026 PERFORMX ADMIN • SECURE DATA ENVIRONMENT • ISO 27001 COMPLIANT</div>
+    </footer>
+
+  </main>
+
+  <script src="../assets/js/api-config.js"></script>
+  <script src="../assets/js/protect.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/modal.js"></script>
+  <script src="../assets/js/admin-shared.js"></script>
+  <script src="../assets/js/admin-settings.js"></script>
+</div>
+</body>
+</html>

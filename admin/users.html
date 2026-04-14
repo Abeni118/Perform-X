@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX Admin — User Management</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/modal.css">
+</head>
+<body>
+<div id="page-content">
+
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <!-- Sidebar -->
+  <aside id="performx-sidebar" class="sidebar closed">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo admin-brand">
+        <div class="logo-icon"><i class='bx bx-hive'></i></div>
+        <span class="brand-name">PerformX Admin</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="users.html" class="nav-item active">
+        <i class='bx bx-group'></i> User Management
+      </a>
+      <a href="compliance.html" class="nav-item">
+        <i class='bx bx-check-shield'></i> Compliance Vault
+      </a>
+      <a href="logs.html" class="nav-item">
+        <i class='bx bx-file'></i> System Logs
+      </a>
+      <a href="settings.html" class="nav-item">
+        <i class='bx bx-cog'></i> Admin Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../auth/login.html" class="nav-item">
+        <i class='bx bx-log-out'></i> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-controls="performx-sidebar" aria-label="Toggle sidebar" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true">☰</span>
+      </button>
+      <div style="font-weight: 600; font-size: 1.125rem;">User Management</div>
+      <div class="search-bar" style="margin-right: auto; margin-left: 2rem;">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search resources...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action" id="adminUsersNotifyBtn">
+          <i class='bx bx-bell'></i>
+        </button>
+        <button class="icon-action" id="themeToggle">
+          <i class='bx bx-moon' id="themeIcon"></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name" id="topbar-user-name"></span>
+            <span class="user-role" id="topbar-user-role"></span>
+          </div>
+          <img src=""
+            alt="Admin" class="user-avatar" width="36" height="36">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header" style="align-items:flex-end;">
+        <div class="page-title">
+          <h1 style="font-size: 1.75rem;">User Directory</h1>
+          <p>Monitor and manage access across the enterprise infrastructure.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-outline" id="adminUsersExportBtn" style="display:flex; align-items:center; gap:0.5rem;">
+            <i class='bx bx-download'></i> Export CSV
+          </button>
+          <button class="btn btn-primary" id="adminUsersCreateBtn" style="display:flex; align-items:center; gap:0.5rem; background:#4F46E5; padding: 0.5rem 1.25rem;">
+            <i class='bx bx-user-plus'></i> Create New User
+          </button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="admin-stat-card" style="padding:1.5rem 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
+            <div class="stat-icon" style="width:36px; height:36px; border-radius:8px; background:#EEF2FF; color:#4F46E5; display:flex; align-items:center; justify-content:center;"><i class='bx bx-group'></i></div>
+            <div style="font-size:0.75rem; color:#111827; font-weight:700;"><i class='bx bx-line-chart' style="color:#4F46E5;"></i> +12% from last month</div>
+          </div>
+          <div class="stat-label" style="font-size: 0.875rem; color:#4B5563; font-weight:600; margin-bottom:0.25rem;">Total Active Users</div>
+          <div class="stat-value" style="font-size: 2rem; color:#111827;">12,482</div>
+        </div>
+
+        <div class="admin-stat-card" style="padding:1.5rem 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
+            <div class="stat-icon" style="width:36px; height:36px; border-radius:8px; background:#EEF2FF; color:#4F46E5; display:flex; align-items:center; justify-content:center;"><i class='bx bx-check-shield'></i></div>
+            <div style="font-size:0.75rem; color:#6B7280; font-weight:700;"><i class='bx bx-right-top-arrow-circle'></i> Stable</div>
+          </div>
+          <div class="stat-label" style="font-size: 0.875rem; color:#4B5563; font-weight:600; margin-bottom:0.25rem;">System Compliance</div>
+          <div class="stat-value" style="font-size: 2rem; color:#111827;">99.8%</div>
+        </div>
+
+        <div class="admin-stat-card" style="padding:1.5rem 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
+            <div class="stat-icon" style="width:36px; height:36px; border-radius:8px; background:#EEF2FF; color:#4F46E5; display:flex; align-items:center; justify-content:center;"><i class='bx bx-line-chart'></i></div>
+            <div style="font-size:0.75rem; color:#EF4444; font-weight:700;"><i class='bx bx-down-arrow-alt'></i> -2% fluctuation</div>
+          </div>
+          <div class="stat-label" style="font-size: 0.875rem; color:#4B5563; font-weight:600; margin-bottom:0.25rem;">Avg Performance</div>
+          <div class="stat-value" style="font-size: 2rem; color:#111827;">86/100</div>
+        </div>
+
+        <div class="admin-stat-card" style="padding:1.5rem 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
+            <div class="stat-icon" style="width:36px; height:36px; border-radius:8px; background:#EEF2FF; color:#4F46E5; display:flex; align-items:center; justify-content:center;"><i class='bx bxs-shield-x'></i></div>
+            <div style="font-size:0.75rem; color:#EF4444; font-weight:700;"><i class='bx bx-error-alt'></i> 4 Pending Review</div>
+          </div>
+          <div class="stat-label" style="font-size: 0.875rem; color:#4B5563; font-weight:600; margin-bottom:0.25rem;">Access Requests</div>
+          <div class="stat-value" style="font-size: 2rem; color:#111827;">24</div>
+        </div>
+      </div>
+
+      <!-- Users Table Section -->
+      <div class="table-card" style="padding: 1.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; border-bottom:1px solid #F3F4F6; padding-bottom:1.5rem; margin-bottom:1rem;">
+          <div class="search-bar" style="width:min(360px, 100%); background:#FFFFFF; border: 1px solid #E5E7EB; border-radius:8px;">
+            <i class='bx bx-search'></i>
+            <input id="adminUsersTableSearch" type="text" placeholder="Search name, email, or role...">
+          </div>
+          <div style="display:flex; gap:1rem; align-items:center;">
+            <button class="btn btn-outline" id="adminUsersFilterBtn" style="display:flex; align-items:center; gap:0.5rem;"><i class='bx bx-filter'></i> Filters</button>
+            <div style="width: 1px; height: 24px; background: #E5E7EB;"></div>
+            <div style="font-size:0.875rem; color:#6B7280; font-weight:500; display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+              Bulk Actions (0) <i class='bx bx-dots-horizontal-rounded'></i>
+            </div>
+          </div>
+        </div>
+
+        <table class="task-table" id="adminUsersTable">
+          <thead>
+            <tr>
+              <th style="padding-right:0; width:40px;"><input type="checkbox" style="width:16px; height:16px; border:1px solid #D1D5DB; border-radius:4px;"></th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280;">USER DETAILS</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280; text-align:center;">ROLE</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280;">ACCOUNT TYPE</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280; text-align:center;">TASKS</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280; text-align:center;">COMPLETION</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280; text-align:center;">SCORE</th>
+              <th style="font-size:0.75rem; letter-spacing:0.05em; color:#6B7280;">STATUS</th>
+              <th style="width:40px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding-right:0;"><input type="checkbox" style="width:16px; height:16px; border:1px solid #D1D5DB; border-radius:4px;"></td>
+              <td>
+                <div style="display:flex; align-items:center; gap:1rem;">
+                  <img src="https://ui-avatars.com/api/?name=Sarah+Jenkins&background=991B1B&color=fff&rounded=true" alt="User" style="width:40px; height:40px; border-radius:50%;">
+                  <div>
+                    <div style="font-weight:600; font-size:0.95rem; color:#111827;">Sarah Jenkins</div>
+                    <div style="font-size:0.75rem; color:#6B7280;">s.jenkins@performx.io</div>
+                  </div>
+                </div>
+              </td>
+              <td style="text-align:center;"><span style="background:#F3F4F6; color:#4B5563; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid #E5E7EB; font-weight:600;">Admin</span></td>
+              <td style="font-size:0.875rem; color:#4B5563; font-weight:500;">Enterprise</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">124</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">98.2%</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">94</td>
+              <td><span style="font-weight:700; font-size:0.8rem; color:#111827;">Active</span></td>
+              <td><button style="background:none; border:none; color:#9CA3AF; cursor:pointer;"><i class='bx bx-dots-vertical-rounded'></i></button></td>
+            </tr>
+            <tr>
+              <td style="padding-right:0;"><input type="checkbox" style="width:16px; height:16px;"></td>
+              <td>
+                <div style="display:flex; align-items:center; gap:1rem;">
+                  <img src="https://ui-avatars.com/api/?name=Marcus+Thorne&background=047857&color=fff&rounded=true" alt="User" style="width:40px; height:40px; border-radius:50%;">
+                  <div>
+                    <div style="font-weight:600; font-size:0.95rem; color:#111827;">Marcus Thorne</div>
+                    <div style="font-size:0.75rem; color:#6B7280;">m.thorne@performx.io</div>
+                  </div>
+                </div>
+              </td>
+              <td style="text-align:center;"><span style="background:#FFFFFF; color:#6B7280; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid #E5E7EB; font-weight:600;">Manager</span></td>
+              <td style="font-size:0.875rem; color:#4B5563; font-weight:500;">Professional</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">89</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">85.5%</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#4F46E5;">78</td>
+              <td><span style="font-weight:700; font-size:0.8rem; color:#111827;">Active</span></td>
+              <td><button style="background:none; border:none; color:#9CA3AF; cursor:pointer;"><i class='bx bx-dots-vertical-rounded'></i></button></td>
+            </tr>
+            <tr>
+              <td style="padding-right:0;"><input type="checkbox" style="width:16px; height:16px;"></td>
+              <td>
+                <div style="display:flex; align-items:center; gap:1rem;">
+                  <img src="https://ui-avatars.com/api/?name=Elena+Rodriguez&background=2563EB&color=fff&rounded=true" alt="User" style="width:40px; height:40px; border-radius:50%;">
+                  <div>
+                    <div style="font-weight:600; font-size:0.95rem; color:#111827;">Elena Rodriguez</div>
+                    <div style="font-size:0.75rem; color:#6B7280;">e.rod@performx.io</div>
+                  </div>
+                </div>
+              </td>
+              <td style="text-align:center;"><span style="background:#FFFFFF; color:#6B7280; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid #E5E7EB; font-weight:600;">Standard</span></td>
+              <td style="font-size:0.875rem; color:#4B5563; font-weight:500;">Enterprise</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">215</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">92.1%</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#4F46E5;">88</td>
+              <td><span style="font-weight:700; font-size:0.8rem; color:#FFFFFF; background:#EF4444; padding:0.25rem 0.75rem; border-radius:999px;">Suspended</span></td>
+              <td><button style="background:none; border:none; color:#9CA3AF; cursor:pointer;"><i class='bx bx-dots-vertical-rounded'></i></button></td>
+            </tr>
+            <tr>
+              <td style="padding-right:0;"><input type="checkbox" style="width:16px; height:16px;"></td>
+              <td>
+                <div style="display:flex; align-items:center; gap:1rem;">
+                  <img src="https://ui-avatars.com/api/?name=David+Chen&background=9CA3AF&color=fff&rounded=true" alt="User" style="width:40px; height:40px; border-radius:50%;">
+                  <div>
+                    <div style="font-weight:600; font-size:0.95rem; color:#111827;">David Chen</div>
+                    <div style="font-size:0.75rem; color:#6B7280;">d.chen@performx.io</div>
+                  </div>
+                </div>
+              </td>
+              <td style="text-align:center;"><span style="background:#FFFFFF; color:#6B7280; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid #E5E7EB; font-weight:600;">Standard</span></td>
+              <td style="font-size:0.875rem; color:#4B5563; font-weight:500;">Basic</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">45</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">72.4%</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">65</td>
+              <td><span style="font-weight:700; font-size:0.8rem; color:#111827;">Active</span></td>
+              <td><button style="background:none; border:none; color:#9CA3AF; cursor:pointer;"><i class='bx bx-dots-vertical-rounded'></i></button></td>
+            </tr>
+            <tr>
+              <td style="padding-right:0;"><input type="checkbox" style="width:16px; height:16px;"></td>
+              <td>
+                <div style="display:flex; align-items:center; gap:1rem;">
+                  <img src="https://ui-avatars.com/api/?name=Aisha+Varma&background=0284C7&color=fff&rounded=true" alt="User" style="width:40px; height:40px; border-radius:50%;">
+                  <div>
+                    <div style="font-weight:600; font-size:0.95rem; color:#111827;">Aisha Varma</div>
+                    <div style="font-size:0.75rem; color:#6B7280;">a.varma@performx.io</div>
+                  </div>
+                </div>
+              </td>
+              <td style="text-align:center;"><span style="background:#FFFFFF; color:#6B7280; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid #E5E7EB; font-weight:600;">Manager</span></td>
+              <td style="font-size:0.875rem; color:#4B5563; font-weight:500;">Professional</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">167</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">95%</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">91</td>
+              <td><span style="font-weight:700; font-size:0.8rem; color:#111827;">Active</span></td>
+              <td><button style="background:none; border:none; color:#9CA3AF; cursor:pointer;"><i class='bx bx-dots-vertical-rounded'></i></button></td>
+            </tr>
+            <tr>
+              <td style="padding-right:0;"><input type="checkbox" style="width:16px; height:16px;"></td>
+              <td>
+                <div style="display:flex; align-items:center; gap:1rem;">
+                  <img src="https://ui-avatars.com/api/?name=Julian+Vance&background=374151&color=fff&rounded=true" alt="User" style="width:40px; height:40px; border-radius:50%;">
+                  <div>
+                    <div style="font-weight:600; font-size:0.95rem; color:#111827;">Julian Vance</div>
+                    <div style="font-size:0.75rem; color:#6B7280;">j.vance@performx.io</div>
+                  </div>
+                </div>
+              </td>
+              <td style="text-align:center;"><span style="background:#F3F4F6; color:#4B5563; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid #E5E7EB; font-weight:600;">Restricted</span></td>
+              <td style="font-size:0.875rem; color:#4B5563; font-weight:500;">Basic</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">12</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">45.8%</td>
+              <td style="text-align:center; font-size:0.875rem; font-weight:700; color:#111827;">42</td>
+              <td><span style="font-weight:700; font-size:0.8rem; color:#6B7280; background:#F3F4F6; padding:0.25rem 0.75rem; border-radius:999px;">Pending</span></td>
+              <td><button style="background:none; border:none; color:#9CA3AF; cursor:pointer;"><i class='bx bx-dots-vertical-rounded'></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Table Footer -->
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:1.5rem; margin-top:1rem; border-top:1px solid #F3F4F6;">
+          <div style="font-size:0.875rem; color:#6B7280;">Showing <strong style="color:#111827;">6</strong> of <strong style="color:#111827;">1,248</strong> total users</div>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <button style="background:none; border:none; font-size:0.875rem; font-weight:500; color:#6B7280; padding:0.5rem; cursor:pointer;">Previous</button>
+            <button style="background:#4F46E5; color:white; border:none; border-radius:6px; width:32px; height:32px; font-weight:600; font-size:0.875rem;">1</button>
+            <button style="background:none; color:#4B5563; border:none; width:32px; height:32px; font-weight:600; font-size:0.875rem; cursor:pointer;">2</button>
+            <button style="background:none; color:#4B5563; border:none; width:32px; height:32px; font-weight:600; font-size:0.875rem; cursor:pointer;">3</button>
+            <button style="background:none; border:none; font-size:0.875rem; font-weight:500; color:#111827; padding:0.5rem; cursor:pointer;">Next</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="text-align:center; justify-content:center; text-transform:uppercase; font-size:0.7rem; font-weight:600; border-top: 1px solid #E5E7EB; padding-bottom:1.5rem; margin-top:2rem;">
+      <div>&copy; 2026 PERFORMX ADMIN • SECURE DATA ENVIRONMENT • ISO 27001 COMPLIANT</div>
+    </footer>
+
+  </main>
+
+  <script src="../assets/js/api-config.js"></script>
+  <script src="../assets/js/protect.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/modal.js"></script>
+  <script src="../assets/js/admin-shared.js"></script>
+  <script src="../assets/js/admin-users.js"></script>
+</div>
+</body>
+</html>

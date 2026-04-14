@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX — Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/dark-mode.css">
+  <link rel="stylesheet" href="./assets/css/saas-modern.css">
+  <link rel="stylesheet" href="./assets/css/modal.css">
+</head>
+
+<body>
+<div id="page-content">
+
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <!-- Sidebar -->
+  <aside id="performx-sidebar" class="sidebar closed">
+    <div class="sidebar-header">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class='bx bx-pulse'></i></div>
+        <span class="brand-name">PerformX</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="index.html" class="nav-item active">
+        <i class='bx bx-grid-alt'></i> Dashboard
+      </a>
+      <a href="pages/task.html" class="nav-item">
+        <i class='bx bx-check-square'></i> Tasks
+      </a>
+      <a href="pages/report.html" class="nav-item">
+        <i class='bx bx-bar-chart-alt-2'></i> Reports
+      </a>
+      <a href="pages/team.html" class="nav-item">
+        <i class='bx bx-user-circle'></i> Team
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../auth/login.html" class="nav-item nav-item-danger">
+        <i class='bx bx-log-out'></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-controls="performx-sidebar"
+        aria-label="Toggle sidebar" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true">☰</span>
+      </button>
+      <div class="search-bar">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search performance...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action" id="btnNotifications">
+          <i class='bx bx-bell'></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-action" id="themeToggle">
+          <i class='bx bx-moon' id="themeIcon"></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name" id="topbar-user-name"></span>
+            <span class="user-role" id="topbar-user-role"></span>
+          </div>
+          <img src=""
+            alt="" class="user-avatar" width="36" height="36">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Performance Dashboard</h1>
+          <p>Welcome back. Here's what's happening today.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn" id="btnExportSummary">
+            Export PDF
+          </button>
+          <button class="btn btn-primary" id="btnRefreshDashboard">
+            Refresh Data
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <div class="stat-icon icon-blue"><i class='bx bx-list-ul'></i></div>
+            <div class="stat-trend trend-up"><i class='bx bx-trending-up'></i> +2</div>
+          </div>
+          <div class="stat-value">12</div>
+          <div class="stat-label">Today's Tasks</div>
+          <div class="stat-desc">3 urgent items</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <div class="stat-icon icon-green"><i class='bx bx-check-circle'></i></div>
+            <div class="stat-trend trend-up"><i class='bx bx-trending-up'></i> +12%</div>
+          </div>
+          <div class="stat-value">8</div>
+          <div class="stat-label">Completed</div>
+          <div class="stat-desc">67% of goal</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <div class="stat-icon icon-purple"><i class='bx bx-bolt-circle'></i></div>
+            <div class="stat-trend trend-up"><i class='bx bx-trending-up'></i> +1.4%</div>
+          </div>
+          <div class="stat-value">94.2%</div>
+          <div class="stat-label">Success %</div>
+          <div class="stat-desc">Top 5% of team</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <div class="stat-icon icon-orange"><i class='bx bx-line-chart'></i></div>
+            <div class="stat-trend trend-down"><i class='bx bx-trending-down'></i> -2</div>
+          </div>
+          <div class="stat-value">88</div>
+          <div class="stat-label">Perf. Score</div>
+          <div class="stat-desc">Highly Productive</div>
+        </div>
+
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="charts-grid">
+
+        <!-- Line Chart Card -->
+        <div class="chart-card">
+          <div class="card-title-row">
+            <div>
+              <h3>Weekly Task Velocity</h3>
+              <p>Daily task completion compared to target goals</p>
+            </div>
+            <span class="badge-light">Last 7 Days</span>
+          </div>
+          <div class="chart-container-large">
+            <canvas id="velocityChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Bar Chart Card -->
+        <div class="chart-card">
+          <div class="card-title-row">
+            <div>
+              <h3>Monthly Throughput</h3>
+              <p>Aggregate task volume by month</p>
+            </div>
+          </div>
+          <div class="chart-container-large">
+            <canvas id="throughputChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Grid -->
+      <div class="bottom-grid">
+
+        <!-- Suggestions Card -->
+        <div class="chart-card">
+          <div class="card-title-row">
+            <div>
+              <h3 style="display:flex;align-items:center;gap:0.5rem;"><i class='bx bx-bolt-circle'
+                  style="color:var(--primary);font-size:1.25rem;"></i> Smart Suggestions</h3>
+              <p style="color:var(--primary);">AI-powered productivity nudges</p>
+            </div>
+            <a href="#" id="linkViewAllSuggestions"
+              style="font-size:0.85rem;font-weight:500;color:var(--primary);text-decoration:none;">View
+              All</a>
+          </div>
+
+          <div class="suggestions-list">
+
+            <div class="suggest-item suggest-green">
+              <div class="suggest-icon"><i class='bx bx-rocket'></i></div>
+              <div class="suggest-content">
+                <h4>Focus Morning</h4>
+                <p>You are 25% more productive before 11:00 AM. Schedule your Deep Work tasks then.</p>
+                <a href="#" class="suggest-link" data-suggestion="focus-morning">Apply Suggestion <i
+                    class='bx bx-chevron-right'></i></a>
+              </div>
+            </div>
+
+            <div class="suggest-item suggest-blue">
+              <div class="suggest-icon"><i class='bx bx-bulb'></i></div>
+              <div class="suggest-content">
+                <h4>Meeting Overhead</h4>
+                <p>You spent 14 hours in meetings this week. Consider declining non-essential syncs.</p>
+                <a href="#" class="suggest-link" data-suggestion="meeting-overhead">Apply Suggestion <i
+                    class='bx bx-chevron-right'></i></a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="suggest-footer">
+            <i class='bx bx-check-shield'></i> Suggestions updated 5 minutes ago based on your current velocity.
+          </div>
+        </div>
+
+        <!-- Activity Card -->
+        <div class="chart-card">
+          <div class="card-title-row">
+            <div>
+              <h3>Recent Activity</h3>
+              <p>Real-time updates across your workspace</p>
+            </div>
+            <span class="badge-light">History</span>
+          </div>
+
+          <div class="activity-list">
+
+            <div class="activity-item">
+              <img src=""
+                alt="" class="activity-avatar">
+              <div class="activity-content">
+                <p><span class="activity-user-name"></span> <span class="muted">completed</span> Quarterly Audit report</p>
+                <div class="activity-time"><i class='bx bx-time-five'></i> 12 mins ago</div>
+              </div>
+              <button class="activity-more"><i class='bx bx-dots-vertical-rounded'></i></button>
+            </div>
+
+            <div class="activity-item">
+              <img src="https://ui-avatars.com/api/?name=Sarah+Chen&background=F59E0B&color=fff&rounded=true"
+                alt="Sarah" class="activity-avatar">
+              <div class="activity-content">
+                <p><span>Sarah Chen</span> <span class="muted">assigned</span> Project Phoenix kickoff</p>
+                <div class="activity-time"><i class='bx bx-time-five'></i> 1 hour ago</div>
+              </div>
+              <button class="activity-more"><i class='bx bx-dots-vertical-rounded'></i></button>
+            </div>
+
+            <div class="activity-item">
+              <img src="https://ui-avatars.com/api/?name=System&background=4F46E5&color=fff&rounded=true" alt="System"
+                class="activity-avatar">
+              <div class="activity-content">
+                <p><span>System</span> <span class="muted">generated</span> Weekly Analytics summary</p>
+                <div class="activity-time"><i class='bx bx-time-five'></i> 3 hours ago</div>
+              </div>
+              <button class="activity-more"><i class='bx bx-dots-vertical-rounded'></i></button>
+            </div>
+
+          </div>
+
+          <button class="btn btn-outline" id="btnShowMoreActivity" style="font-weight: 500;">Show more activities</button>
+          <button class="btn btn-primary" id="btnContactSupport" style="font-weight: 500; margin-left: 1rem;">
+            <i class='bx bx-support'></i> Contact Support
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>&copy; 2026 PerformX. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="pages/privacy.html">Privacy Policy</a>
+        <a href="pages/terms.html">Terms of Service</a>
+        <a href="pages/support.html">Support</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="./assets/js/api-config.js"></script>
+  <script src="./assets/js/protect.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
+  <script src="./assets/js/modal.js"></script>
+  <script src="./assets/js/shared.js"></script>
+  <script src="./assets/js/dashboard.js"></script>
+</div>
+</body>
+
+</html>

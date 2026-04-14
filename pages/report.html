@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX — Reports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/modal.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/report.css">
+  <link rel="stylesheet" href="../assets/css/modal.css">
+</head>
+<body>
+<div id="page-content">
+
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <!-- Sidebar -->
+  <aside id="performx-sidebar" class="sidebar closed">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo">
+        <div class="logo-icon"><i class='bx bx-pulse'></i></div>
+        <span class="brand-name">PerformX</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">
+        <i class='bx bx-grid-alt'></i> Dashboard
+      </a>
+      <a href="task.html" class="nav-item">
+        <i class='bx bx-check-square'></i> Tasks
+      </a>
+      <a href="report.html" class="nav-item active">
+        <i class='bx bx-bar-chart-alt-2'></i> Reports
+      </a>
+      <a href="team.html" class="nav-item">
+        <i class='bx bx-user-circle'></i> Team
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../auth/login.html" class="nav-item nav-item-danger">
+        <i class='bx bx-log-out'></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-controls="performx-sidebar" aria-label="Toggle sidebar" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true">☰</span>
+      </button>
+      <div class="search-bar">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search performance...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action">
+          <i class='bx bx-bell'></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-action" id="themeToggle">
+          <i class='bx bx-moon' id="themeIcon"></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name" id="topbar-user-name"></span>
+            <span class="user-role" id="topbar-user-role"></span>
+          </div>
+          <img src=""
+            alt="" class="user-avatar">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Performance Reports</h1>
+          <p>Deep dive into your productivity trends and team benchmarks.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-outline" id="btnReportFilter" style="display:flex;align-items:center;gap:0.5rem;">
+            <i class='bx bx-filter'></i> Filter
+          </button>
+          <button class="btn btn-outline" id="btnReportExport" style="display:flex;align-items:center;gap:0.5rem;">
+            <i class='bx bx-download'></i> Export Data
+          </button>
+          <button class="btn btn-primary" id="btnUpdateInsights" style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">
+            Update Insights
+          </button>
+        </div>
+      </div>
+
+      <!-- Detail KPI Grid -->
+      <div class="kpi-grid">
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue" style="background:#F5F3FF;color:#8B5CF6;"><i class='bx bx-target-lock'></i></div>
+            <div class="kpi-trend trend-up"><i class='bx bx-trending-up'></i> +5.4%</div>
+          </div>
+          <div class="kpi-label">Performance Score</div>
+          <div class="kpi-value">94.2</div>
+          <div class="kpi-meta"> Based on task efficiency<br>and focus time<i class='bx bx-cog' style="margin-left:auto;"></i></div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue"><i class='bx bx-badge-check'></i></div>
+            <div class="kpi-trend trend-up"><i class='bx bx-trending-up'></i> +2.1%</div>
+          </div>
+          <div class="kpi-label">Success Percentage</div>
+          <div class="kpi-value">88%</div>
+          <div class="kpi-meta"> Completed vs. assigned<br>task ratio<i class='bx bx-cog' style="margin-left:auto;"></i></div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue" style="background:#F3F4F6;color:#6B7280;"><i class='bx bx-flame'></i></div>
+            <div class="kpi-trend trend-gray"><i class='bx bx-trending-up'></i> New Record</div>
+          </div>
+          <div class="kpi-label">Active Streak</div>
+          <div class="kpi-value">12 Days</div>
+          <div class="kpi-meta"> Consecutive days meeting<br>daily goals<i class='bx bx-cog' style="margin-left:auto;"></i></div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-red"><i class='bx bx-calendar'></i></div>
+            <div class="kpi-trend trend-down"><i class='bx bx-trending-down'></i> -12%</div>
+          </div>
+          <div class="kpi-label">Avg. Completion Time</div>
+          <div class="kpi-value">4.2 hrs</div>
+          <div class="kpi-meta"> Time taken to finish<br>high-priority tasks<i class='bx bx-cog' style="margin-left:auto;"></i></div>
+        </div>
+
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="charts-grid-equal">
+
+        <div class="chart-card">
+          <div class="card-title-row">
+            <div>
+              <h3>Weekly Performance</h3>
+              <p>Activity breakdown for current week</p>
+            </div>
+            <span class="badge-blue-light">Live Updates</span>
+          </div>
+          <div class="chart-container-large">
+            <canvas id="weeklyPerformance"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-title-row">
+            <div>
+              <h3>Monthly Benchmarks</h3>
+              <p>Actual vs. Target performance</p>
+            </div>
+            <div class="chart-legend">
+              <span style="display:flex;align-items:center;gap:0.4rem;"><span class="legend-dot dot-actual"></span> Actual</span>
+              <span style="display:flex;align-items:center;gap:0.4rem;"><span class="legend-dot dot-target"></span> Target</span>
+            </div>
+          </div>
+          <div class="chart-container-large">
+            <canvas id="monthlyBenchmarks"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Streak Heatmap Section -->
+      <div class="streak-section">
+        <div class="card-title-row" style="margin-bottom: 0.5rem;">
+          <div>
+            <h3 style="font-size:1.125rem;font-weight:700;color:#111827;margin-bottom:0.25rem;">Activity Streak</h3>
+            <p style="color:#6B7280;font-size:0.875rem;">Your consistency over the last 90 days</p>
+          </div>
+          <div class="streak-actions">
+            <div class="streak-legend">
+              <span class="muted-text text-sm">Less</span>
+              <span class="heat-dot heat-0"></span>
+              <span class="heat-dot heat-1"></span>
+              <span class="heat-dot heat-2"></span>
+              <span class="heat-dot heat-3"></span>
+              <span class="muted-text text-sm">More</span>
+            </div>
+            <button class="btn btn-outline" id="btnStreakRange" style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;"><i class='bx bx-calendar-event'></i> Last 3 Months</button>
+          </div>
+        </div>
+
+        <div class="heatmap-grid" id="heatmapGrid">
+          <!-- JS will populate dots -->
+        </div>
+
+        <div class="streak-bottom">
+          <div class="streak-stats-row">
+            <div class="s-stat">
+              <div class="s-val text-primary">12 Days</div>
+              <div class="s-lbl">CURRENT STREAK</div>
+            </div>
+            <div class="s-stat">
+              <div class="s-val">28 Days</div>
+              <div class="s-lbl">LONGEST STREAK</div>
+            </div>
+            <div class="s-stat">
+              <div class="s-val">84%</div>
+              <div class="s-lbl">CONSISTENCY</div>
+            </div>
+          </div>
+          <div class="streak-cheer">
+            <i class='bx bx-like' style="font-size:1.25rem;color:#4F46E5;"></i> Keep it up, Alex! You're in the top 5% this month.
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Tip & Stats -->
+      <div class="bottom-insights-grid">
+
+        <div class="ai-tip-card">
+          <div class="ai-tip-icon">
+            <i class='bx bx-trending-up'></i>
+          </div>
+          <div class="ai-tip-content">
+            <h4>AI Performance Tip</h4>
+            <p>You're most productive between <strong class="text-primary">9:00 AM and 11:30 AM.</strong><br> We suggest
+              scheduling your high-priority "Deep Work" tasks during this window to increase your success percentage by
+              an estimated 14%.</p>
+            <a href="#" id="linkReportBreakdown" class="tip-link">View detailed breakdown &rarr;</a>
+          </div>
+        </div>
+
+        <div class="quick-stats-card">
+          <h4 class="qs-title">QUICK STATS</h4>
+          <div class="qs-list">
+            <div class="qs-row">
+              <span class="qs-lbl">Total Focus Time</span>
+              <span class="qs-val">142h</span>
+            </div>
+            <div class="qs-row">
+              <span class="qs-lbl">Meetings Attended</span>
+              <span class="qs-val">24</span>
+            </div>
+            <div class="qs-row border-0">
+              <span class="qs-lbl">Tasks Overdue</span>
+              <span class="qs-val">0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>&copy; 2026 PerformX. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+  </main>
+  
+  <script src="../assets/js/api-config.js"></script>
+  <script src="../assets/js/shared.js"></script>
+  <script src="../assets/js/protect.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/modal.js"></script>
+  <script src="../assets/js/report.js"></script>
+</div>
+</body>
+</html>

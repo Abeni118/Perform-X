@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PerformX — Team Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/team.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/saas-modern.css">
+  <link rel="stylesheet" href="../assets/css/modal.css">
+</head>
+<body>
+<div id="page-content">
+
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <!-- Sidebar -->
+  <aside id="performx-sidebar" class="sidebar closed">
+    <div class="sidebar-header">
+      <a href="../index.html" class="brand-logo">
+        <div class="logo-icon"><i class='bx bx-pulse'></i></div>
+        <span class="brand-name">PerformX</span>
+      </a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">
+        <i class='bx bx-grid-alt'></i> Dashboard
+      </a>
+      <a href="task.html" class="nav-item">
+        <i class='bx bx-check-square'></i> Tasks
+      </a>
+      <a href="report.html" class="nav-item">
+        <i class='bx bx-bar-chart-alt-2'></i> Reports
+      </a>
+      <a href="team.html" class="nav-item active">
+        <i class='bx bx-group'></i> Team
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../auth/login.html" class="nav-item nav-item-danger">
+        <i class='bx bx-log-out'></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-controls="performx-sidebar" aria-label="Toggle sidebar" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true">☰</span>
+      </button>
+      <div class="search-bar">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search performance...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-action">
+          <i class='bx bx-bell'></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-action" id="themeToggle">
+          <i class='bx bx-moon' id="themeIcon"></i>
+        </button>
+
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name" id="topbar-user-name"></span>
+            <span class="user-role" id="topbar-user-role"></span>
+          </div>
+          <img src=""
+            alt="" class="user-avatar">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Team Performance Dashboard</h1>
+          <p>Manage your workforce, monitor departmental KPIs, and streamline operations.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-outline" id="btnTeamRange">
+            Last 30 Days
+          </button>
+          <button class="btn btn-primary" id="btnInviteMember" style="display:flex;align-items:center;gap:0.5rem;font-weight:600;">
+            <i class='bx bx-user-plus'></i> Invite Member
+          </button>
+        </div>
+      </div>
+
+      <!-- Top KPI Grid -->
+      <div class="kpi-grid">
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue-light"><i class='bx bx-trending-up'></i></div>
+            <div class="kpi-trend trend-green"><i class='bx bx-trending-up'></i> +2.5%</div>
+          </div>
+          <div class="kpi-label">Team Efficiency</div>
+          <div class="kpi-value">94.2%</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-green-light"><i class='bx bx-check-circle'></i></div>
+            <div class="kpi-trend trend-green"><i class='bx bx-trending-up'></i> +12%</div>
+          </div>
+          <div class="kpi-label">Tasks Completed</div>
+          <div class="kpi-value">1,284</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-orange-light"><i class='bx bx-time-five'></i></div>
+            <div class="kpi-trend trend-red"><i class='bx bx-trending-down'></i> -0.4%</div>
+          </div>
+          <div class="kpi-label">Average Velocity</div>
+          <div class="kpi-value">4.8/d</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon icon-blue-light"><i class='bx bx-briefcase'></i></div>
+            <div class="kpi-trend trend-green"><i class='bx bx-trending-up'></i> +1</div>
+          </div>
+          <div class="kpi-label">Active Projects</div>
+          <div class="kpi-value">12</div>
+        </div>
+
+      </div>
+
+      <!-- Bar Chart Section -->
+      <div class="chart-card">
+        <div class="card-title-row">
+          <div>
+            <h3>Employee Performance Score Comparison</h3>
+            <p>Visual benchmarking of individual contribution scores for the current period.</p>
+          </div>
+          <button class="btn btn-outline" id="btnTeamExport" style="background:#F9FAFB;border-color:#F3F4F6;">Export Report</button>
+        </div>
+        <div class="chart-container-large">
+          <canvas id="teamScoreChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Team Directory Table Section -->
+      <div class="chart-card directory-section" style="padding:0;">
+        <div class="card-title-row" style="padding:1.75rem 1.75rem 0.5rem 1.75rem;">
+          <div>
+            <h3>Team Directory & Performance</h3>
+            <p>Manage individual workloads and monitor real-time completion metrics.</p>
+          </div>
+          <div class="directory-actions">
+            <button class="btn btn-outline" id="btnDirectoryFilter" style="background:#F9FAFB;border-color:#F3F4F6;">Filter</button>
+            <button class="btn btn-primary" id="btnAssignTeamTask" style="display:flex;align-items:center;gap:0.5rem;font-weight:600;"><i class='bx bx-plus-circle'></i> Assign New Task</button>
+          </div>
+        </div>
+
+        <table class="team-table">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th style="text-align: center;">Total Tasks</th>
+              <th style="text-align: center;">Completed</th>
+              <th style="width: 25%;">Success Rate</th>
+              <th style="text-align: center;">Perf. Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Team members will be loaded dynamically from backend -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>&copy; 2026 PerformX. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+
+  </main>
+  
+  <script src="../assets/js/api-config.js"></script>
+  <script src="../assets/js/shared.js"></script>
+  <script src="../assets/js/protect.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/modal.js"></script>
+  <script src="../assets/js/team.js"></script>
+</div>
+</body>
+</html>

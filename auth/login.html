@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PerformX — Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+</head>
+<body class="auth-page">
+<div id="page-content">
+
+    <div class="split-screen-layout">
+        
+        <!-- Left Image Side -->
+        <div class="split-image-side">
+            <div class="image-brand-top">
+                <div class="auth-logo-icon"><i class='bx bx-pulse'></i></div>
+                <span class="brand-text">PerformX</span>
+                <span class="brand-tagline">The standard for performance</span>
+            </div>
+            <div class="image-overlay">
+                <div class="glass-panel">
+                    <div class="glass-quote-icon"><i class='bx bxs-quote-alt-left'></i></div>
+                    <p class="glass-quote-text">"PerformX has completely transformed how our engineering team tracks sprint velocity. It's clean, fast, and exactly what we needed to hit our quarterly goals."</p>
+                    <div class="glass-author">
+                        <div class="glass-avatar">SC</div>
+                        <div class="glass-info">
+                            <h5>Sarah Chen</h5>
+                            <p>CTO @ FLOWSTATE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Form Side -->
+        <div class="split-form-side">
+            <a href="../index.html" class="back-link" style="position: absolute; top: 3rem; left: 3rem; margin: 0;"><i class='bx bx-left-arrow-alt'></i> Back to dashboard</a>
+            
+            <div class="split-form-container">
+                <a href="../index.html" class="auth-brand" style="justify-content: flex-start;">
+                    <div class="auth-logo-icon"><i class='bx bx-pulse'></i></div>
+                    <span class="auth-brand-text">PerformX</span>
+                </a>
+
+                <div class="auth-header" style="text-align: left;">
+                    <h1 class="auth-title">Welcome back</h1>
+                    <p class="auth-subtitle">Monitor your productivity and manage team performance with ease.</p>
+                </div>
+
+                <form id="loginForm" novalidate>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email or Username</label>
+                        <div class="input-container">
+                            <i class='bx bx-envelope input-icon'></i>
+                            <input id="loginEmail" name="email" type="text" class="form-input" placeholder="admin@example.com or admin" required>
+                        </div>
+                        <div id="loginEmailError" class="auth-field-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-row">
+                            <label class="form-label">Password</label>
+                            <a href="#" class="form-link">Forgot password?</a>
+                        </div>
+                        <div class="input-container">
+                            <i class='bx bx-lock-alt input-icon'></i>
+                            <input id="loginPassword" name="password" type="password" class="form-input" placeholder="••••••••" required>
+                            <button type="button" class="input-action toggle-password" data-target="loginPassword"><i class='bx bx-show'></i></button>
+                        </div>
+                        <div id="loginPasswordError" class="auth-field-error"></div>
+                    </div>
+
+                    <div id="loginError" class="auth-error" role="alert" aria-live="polite"></div>
+
+                    <button id="loginSubmit" type="submit" class="btn-block" style="margin-top: 2rem;">
+                        Login to Dashboard <i class='bx bx-right-arrow-alt'></i>
+                    </button>
+
+                    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: #475569; cursor: pointer;">
+                        Don't have an account? <a href="register.html" class="form-link">Create account</a>
+                    </div>
+                    
+                </form>
+            </div>
+            
+            <div class="auth-footer" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 3rem;">
+                <div>&copy; 2024 PerformX</div>
+                <div class="auth-footer-links">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../assets/js/api-config.js"></script>
+    <script src="../assets/js/auth.js"></script>
+</div>
+</body>
+</html>

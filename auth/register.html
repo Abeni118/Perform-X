@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PerformX — Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+</head>
+<body class="auth-page">
+<div id="page-content">
+
+    <div class="split-screen-layout">
+        
+        <!-- Left Form Side -->
+        <div class="split-form-side">
+            <a href="login.html" class="back-link" style="position: absolute; top: 3rem; left: 3rem; margin: 0;"><i class='bx bx-left-arrow-alt'></i> Back to login</a>
+            
+            <div class="split-form-container">
+                <a href="../index.html" class="auth-brand" style="justify-content: flex-start;">
+                    <div class="auth-logo-icon"><i class='bx bx-pulse'></i></div>
+                    <span class="auth-brand-text">PerformX</span>
+                </a>
+
+                <div class="auth-header" style="text-align: left;">
+                    <h1 class="auth-title">Create your account</h1>
+                    <p class="auth-subtitle">Start optimizing your productivity today.</p>
+                </div>
+
+                <form id="registerForm" novalidate>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <div class="input-container">
+                            <i class='bx bx-user input-icon'></i>
+                            <input id="registerName" type="text" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div id="registerNameError" class="auth-field-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <div class="input-container">
+                            <i class='bx bx-envelope input-icon'></i>
+                            <input id="registerEmail" type="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                        <div id="registerEmailError" class="auth-field-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="input-container">
+                            <i class='bx bx-lock-alt input-icon'></i>
+                            <input id="registerPassword" type="password" class="form-input" placeholder="••••••••" required>
+                            <button type="button" class="input-action toggle-password" data-target="registerPassword"><i class='bx bx-show'></i></button>
+                        </div>
+                        <div id="registerPasswordError" class="auth-field-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <div class="input-container">
+                            <i class='bx bx-lock-alt input-icon'></i>
+                            <input id="registerPasswordConfirm" type="password" class="form-input" placeholder="••••••••" required>
+                            <button type="button" class="input-action toggle-password" data-target="registerPasswordConfirm"><i class='bx bx-show'></i></button>
+                        </div>
+                        <div id="registerPasswordConfirmError" class="auth-field-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">I am joining as a...</label>
+                        <div class="input-container">
+                            <i class='bx bx-briefcase input-icon'></i>
+                            <select id="registerRole" class="form-input" style="appearance: none;">
+                                <option value="user">Personal</option>
+                                <option value="user">Team Lead</option>
+                                <option value="admin">Executive</option>
+                            </select>
+                            <button type="button" class="input-action" style="pointer-events: none;"><i class='bx bx-chevron-down'></i></button>
+                        </div>
+                    </div>
+
+                    <div id="registerError" class="auth-error" role="alert" aria-live="polite"></div>
+
+                    <button id="registerSubmit" type="submit" class="btn-block" style="margin-top: 1.5rem;">
+                        Create Account <i class='bx bx-chevron-right'></i>
+                    </button>
+
+                    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: #475569;">
+                        Already have an account? <a href="login.html" class="form-link">Sign in</a>
+                    </div>
+                    
+                    <div class="legal-tiny">
+                        By clicking "Create Account", you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                    </div>
+
+                </form>
+            </div>
+            
+            <div class="auth-footer" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 3rem;">
+                <div>&copy; 2024 PerformX</div>
+                <div class="auth-footer-links">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Right Image Side -->
+        <div class="split-image-side">
+            <div class="image-brand-top">
+                <div class="auth-logo-icon"><i class='bx bx-pulse'></i></div>
+                <span class="brand-text">PerformX</span>
+                <span class="brand-tagline">The standard for performance</span>
+            </div>
+            <div class="image-overlay">
+                <div class="glass-panel">
+                    <div class="glass-badge">
+                        <i class='bx bxs-star'></i> Trusted by 25,000+ top teams
+                    </div>
+                    <h2 class="glass-heading">Elevate your productivity to the next level.</h2>
+                    <ul class="glass-features">
+                        <li><i class='bx bx-check-circle'></i> Real-time smart analytics & tracking</li>
+                        <li><i class='bx bx-check-circle'></i> Seamless team coordination</li>
+                        <li><i class='bx bx-check-circle'></i> AI-driven performance nudges</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="../assets/js/api-config.js"></script>
+    <script src="../assets/js/auth.js"></script>
+</div>
+</body>
+</html>
