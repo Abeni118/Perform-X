@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
         members = result.data || [];
         console.log('Team members loaded:', members.length);
         render();
-        updateChart();
       } else {
         throw new Error(result.message || 'Failed to load team members');
       }
@@ -60,25 +59,48 @@ document.addEventListener("DOMContentLoaded", () => {
       S.toast('Error loading team members from server', 'error');
       // Show empty state
       tableBody.innerHTML = '<tr><td colspan="5" style="padding:1rem;text-align:center;">Unable to load team members. Please try again.</td></tr>';
+      members = [];
+    } finally {
+      updateChart(); // Always initializing chart
     }
   };
 
   const updateChart = () => {
-    if (!scoreCanvas || !window.Chart) return;
+    if (!scoreCanvas) return;
+    if (!window.Chart) {
+      console.error('Chart.js is not loaded.');
+      return;
+    }
     
-    const labels = members.slice(0, 6).map((m) => m.name.split(" ")[0]);
-    const data = members.slice(0, 6).map((m) => m.score);
+    let labels = ["No Data"];
+    let data = [0];
+
+    try {
+      if (members && members.length > 0) {
+        const topMembers = members.slice(0, 6);
+        labels = topMembers.map((m) => (m.name || "User").split(" ")[0]);
+        data = topMembers.map((m) => m.score || 0);
+      }
+    } catch (err) {
+      console.error("Error mapping team chart data:", err);
+      labels = ["Error"];
+      data = [0];
+    }
     
-    if (chartInstance) {
-      chartInstance.data.labels = labels;
-      chartInstance.data.datasets[0].data = data;
-      chartInstance.update();
-    } else {
-      chartInstance = new Chart(scoreCanvas.getContext("2d"), {
-        type: "bar",
-        data: { labels, datasets: [{ data, backgroundColor: "#4F46E5", borderRadius: 4 }] },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-      });
+    try {
+      if (chartInstance) {
+        chartInstance.data.labels = labels;
+        chartInstance.data.datasets[0].data = data;
+        chartInstance.update();
+      } else {
+        chartInstance = new Chart(scoreCanvas.getContext("2d"), {
+          type: "bar",
+          data: { labels, datasets: [{ data, backgroundColor: "#4F46E5", borderRadius: 4 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+        });
+      }
+    } catch (err) {
+      console.error("Error rendering chart instance:", err);
     }
   };
 

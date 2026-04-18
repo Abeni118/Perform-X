@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
         reportData = result.data || {};
         console.log('Report data loaded:', reportData);
         updateKPIs();
-        updateCharts();
       } else {
         throw new Error(result.message || 'Failed to load report data');
       }
@@ -62,6 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
         kpiCards[1].querySelector('.kpi-value').textContent = '0';
         kpiCards[2].querySelector('.kpi-value').textContent = '0%';
       }
+      reportData = {};
+    } finally {
+      updateCharts(); // Always try to initialize charts
     }
   };
 
@@ -82,47 +84,73 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const updateCharts = () => {
-    // Update weekly performance chart
-    if (weeklyCanvas && window.Chart && reportData.weekly_performance) {
-      const labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-      const data = reportData.weekly_performance;
-      
-      if (weeklyChart) {
-        weeklyChart.data.datasets[0].data = data;
-        weeklyChart.update();
-      } else {
-        weeklyChart = new Chart(weeklyCanvas.getContext("2d"), {
-          type: "line",
-          data: { labels, datasets: [{ data, borderColor: "#4F46E5", borderWidth: 3, tension: 0.4, pointRadius: 0, fill: false }] },
-          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-        });
-      }
+    if (!window.Chart) {
+      console.error('Chart.js is not loaded.');
+      return;
     }
 
-    // Update monthly benchmarks chart
-    if (monthlyCanvas && window.Chart && reportData.monthly_targets) {
-      const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"].slice(0, reportData.monthly_targets.length);
-      const targetData = reportData.monthly_targets;
-      const actualData = reportData.monthly_actuals || [];
-      
-      if (monthlyChart) {
-        monthlyChart.data.labels = labels;
-        monthlyChart.data.datasets[0].data = targetData;
-        monthlyChart.data.datasets[1].data = actualData;
-        monthlyChart.update();
-      } else {
-        monthlyChart = new Chart(monthlyCanvas.getContext("2d"), {
-          type: "bar",
-          data: {
-            labels,
-            datasets: [
-              { data: targetData, backgroundColor: "#E5E7EB", borderRadius: 4 },
-              { data: actualData, backgroundColor: "#4F46E5", borderRadius: 4 }
-            ]
-          },
-          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-        });
+    try {
+      // Update weekly performance chart
+      if (weeklyCanvas) {
+        const labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+        let data = [0, 0, 0, 0, 0, 0, 0];
+        
+        if (reportData && Array.isArray(reportData.weekly_performance) && reportData.weekly_performance.length > 0) {
+          data = reportData.weekly_performance;
+        }
+        
+        if (weeklyChart) {
+          weeklyChart.data.datasets[0].data = data;
+          weeklyChart.update();
+        } else {
+          weeklyChart = new Chart(weeklyCanvas.getContext("2d"), {
+            type: "line",
+            data: { labels, datasets: [{ data, borderColor: "#4F46E5", borderWidth: 3, tension: 0.4, pointRadius: 0, fill: false }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+          });
+        }
       }
+    } catch (err) {
+      console.error("Error updating weekly chart:", err);
+    }
+
+    try {
+      // Update monthly benchmarks chart
+      if (monthlyCanvas) {
+        const defaultLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+        let labels = defaultLabels;
+        let targetData = [0, 0, 0, 0, 0, 0];
+        let actualData = [0, 0, 0, 0, 0, 0];
+        
+        if (reportData && Array.isArray(reportData.monthly_targets) && reportData.monthly_targets.length > 0) {
+          labels = defaultLabels.slice(0, reportData.monthly_targets.length);
+          targetData = reportData.monthly_targets;
+          actualData = (reportData.monthly_actuals && Array.isArray(reportData.monthly_actuals)) 
+            ? reportData.monthly_actuals 
+            : new Array(targetData.length).fill(0);
+        }
+        
+        if (monthlyChart) {
+          monthlyChart.data.labels = labels;
+          monthlyChart.data.datasets[0].data = targetData;
+          monthlyChart.data.datasets[1].data = actualData;
+          monthlyChart.update();
+        } else {
+          monthlyChart = new Chart(monthlyCanvas.getContext("2d"), {
+            type: "bar",
+            data: {
+              labels,
+              datasets: [
+                { data: targetData, backgroundColor: "#E5E7EB", borderRadius: 4 },
+                { data: actualData, backgroundColor: "#4F46E5", borderRadius: 4 }
+              ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+          });
+        }
+      }
+    } catch (err) {
+      console.error("Error updating monthly chart:", err);
     }
   };
 

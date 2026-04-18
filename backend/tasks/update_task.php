@@ -23,6 +23,41 @@ if ($dbId <= 0 || $title === '') {
     respond(400, 'error', null, 'Valid id and title are required.');
 }
 
+// PRIORITY CONFLICT CHECK
+$conflictAdjusted = null;
+$messagePrefix = 'Task updated';
+
+$checkStmt = $pdo->prepare(
+    'SELECT id FROM tasks 
+     WHERE user_id = :user_id 
+       AND id != :current_id
+       AND deadline = :deadline 
+       AND priority = :priority 
+       AND status != \'Completed\'
+       AND start_time < :end_time 
+       AND end_time > :start_time
+     LIMIT 1'
+);
+$checkStmt->execute([
+    'user_id' => $user['id'],
+    'current_id' => $dbId,
+    'deadline' => $deadline,
+    'priority' => $priority,
+    'start_time' => $startTime,
+    'end_time' => $endTime
+]);
+
+if ($checkStmt->fetch()) {
+    if ($priority === 'High') {
+        $priority = 'Medium';
+        $conflictAdjusted = 'Medium';
+    } elseif ($priority === 'Medium' || $priority === 'Low') {
+        $priority = 'Low';
+        $conflictAdjusted = 'Low';
+    }
+    $messagePrefix = "Task updated, but priority conflict detected. Adjusted to {$priority}";
+}
+
 $stmt = $pdo->prepare(
     'UPDATE tasks 
      SET title = :title, description = :description, category = :category, priority = :priority, start_time = :start_time, end_time = :end_time, deadline = :deadline, status = :status 
@@ -41,9 +76,14 @@ $stmt->execute([
     'status' => $status
 ]);
 
-if ($stmt->rowCount() === 0) {
+if ($stmt->rowCount() === 0 && !$conflictAdjusted) {
     respond(404, 'error', null, 'Task not found, access denied or unchanged.');
 }
 
-respond(200, 'success', ['id' => $idStr], 'Task updated');
+$resData = ['id' => $idStr];
+if ($conflictAdjusted) {
+    $resData['conflict_adjusted'] = $conflictAdjusted;
+}
+
+respond(200, 'success', $resData, $messagePrefix);
 

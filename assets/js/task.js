@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const S = window.PerformXShared;
   const M = window.PerformXModal;
+  const N = window.PerformXNotifications;
   const apiUrl = window.apiUrl;
   if (!S || !M || !apiUrl) return;
 
@@ -220,7 +221,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (response.ok && result.data) {
         tasks.push(result.data);
         render();
-        S.toast("Task added.", "success");
+        
+        // Trigger notification event for new task assignment
+        if (N) {
+          N.triggerTaskAssigned(result.data);
+        }
+        
+        if (result.data.conflict_adjusted) {
+          S.addNotification(`Priority conflict detected. Adjusted to ${result.data.conflict_adjusted}.`, "warning");
+        }
       } else {
         S.toast(result.message || "Failed to add task", "error");
       }
@@ -233,6 +242,11 @@ document.addEventListener("DOMContentLoaded", () => {
   addBtn?.addEventListener("click", addTask);
   assignNowBtn?.addEventListener("click", addTask);
   filterBtn?.addEventListener("click", async () => {
+    
+    // Initialize notification dropdown to make bell icon functional
+    if (S && S.ensureNotificationDropdown) {
+      S.ensureNotificationDropdown();
+    }
     const data = await M.openForm({
       title: "Filter Tasks",
       submitText: "Apply",
@@ -298,9 +312,16 @@ document.addEventListener("DOMContentLoaded", () => {
           })
         });
         if (response.ok) {
+           const oldStatus = task.status;
            task.status = "Completed";
            render();
-           S.toast("Task marked completed.", "success");
+           
+           // Trigger task completion notification event
+           if (N) {
+             N.triggerTaskCompleted(task);
+           } else {
+             S.addNotification("Task '" + task.title + "' has been completed.", "success");
+           }
         }
       } catch (err) {
         S.toast("Error completing task.", "error");
@@ -329,10 +350,16 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      const result = await response.json();
       if (response.ok) {
+         if (result.data && result.data.conflict_adjusted) {
+           payload.priority = result.data.conflict_adjusted;
+           S.addNotification(`Priority conflict detected. Adjusted to ${result.data.conflict_adjusted}.`, "warning");
+         } else {
+           S.toast("Task updated.", "success");
+         }
          tasks[taskIndex] = { ...task, ...payload };
          render();
-         S.toast("Task updated.", "success");
       } else {
          S.toast("Update failed.", "error");
       }
@@ -342,5 +369,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   fetchTasks();
+
+  const notifiedTasks = new Set();
+  setInterval(() => {
+    const now = new Date();
+    const currentHM = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+    const todayStr = getLocalDateStr(now);
+    
+    tasks.forEach(t => {
+      if (t.dueDate === todayStr && t.start === currentHM && t.status !== "Completed" && !notifiedTasks.has(t.id)) {
+        notifiedTasks.add(t.id);
+        
+        // Use new notification system for time-based alerts
+        if (N) {
+          // Create task object with assigned_time for notification system
+          const taskWithTime = {
+            ...t,
+            assigned_time: new Date(`${t.dueDate} ${t.start}`).toISOString()
+          };
+          N.triggerTaskAssigned(taskWithTime); // This will trigger time-based alert
+        } else {
+          S.addNotification(`Task '${t.title}' is starting now.`, "info");
+        }
+      }
+    });
+  }, 30000);
 });
 

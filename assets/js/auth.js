@@ -185,8 +185,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const role = roleInput ? (roleInput.value === "admin" ? "admin" : "user") : "user";
       
       try {
-        // Explicitly hit the backend/auth logic as requested directly
-        const response = await fetch('http://localhost/Perform-X-master/backend/auth/register.php', {
+        // Dynamic path generator allowing registration logic to execute
+        const response = await fetch(authUrl('register.php'), {
           method: 'POST',
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' },

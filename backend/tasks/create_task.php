@@ -21,6 +21,39 @@ if ($title === '' || $deadline === '') {
     respond(400, 'error', null, 'Title and due date are required.');
 }
 
+// PRIORITY CONFLICT CHECK
+$conflictAdjusted = null;
+$messagePrefix = 'Task created';
+
+$checkStmt = $pdo->prepare(
+    'SELECT id FROM tasks 
+     WHERE user_id = :user_id 
+       AND deadline = :deadline 
+       AND priority = :priority 
+       AND status != \'Completed\'
+       AND start_time < :end_time 
+       AND end_time > :start_time
+     LIMIT 1'
+);
+$checkStmt->execute([
+    'user_id' => $user['id'],
+    'deadline' => $deadline,
+    'priority' => $priority,
+    'start_time' => $startTime,
+    'end_time' => $endTime
+]);
+
+if ($checkStmt->fetch()) {
+    if ($priority === 'High') {
+        $priority = 'Medium';
+        $conflictAdjusted = 'Medium';
+    } elseif ($priority === 'Medium' || $priority === 'Low') {
+        $priority = 'Low';
+        $conflictAdjusted = 'Low';
+    }
+    $messagePrefix = "Task created, but priority conflict detected. Adjusted to {$priority}";
+}
+
 $stmt = $pdo->prepare(
     'INSERT INTO tasks (user_id, title, description, category, priority, start_time, end_time, deadline, status) 
      VALUES (:user_id, :title, :description, :category, :priority, :start_time, :end_time, :deadline, :status)'
@@ -52,5 +85,9 @@ $newTask = [
     'status' => $status
 ];
 
-respond(201, 'success', $newTask, 'Task created');
+if (isset($conflictAdjusted)) {
+    $newTask['conflict_adjusted'] = $conflictAdjusted;
+}
+
+respond(201, 'success', $newTask, $messagePrefix);
 
