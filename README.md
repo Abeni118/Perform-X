@@ -30,6 +30,7 @@
 **Perform-X** is developed to bridge the gap between individual task execution and macro team performance metrics. Traditional task managers often lack integrated, direct performance analytics that connect a user's daily habits to team success rates. 
 By combining a sleek, professional SaaS dashboard user interface with a robust, session-backed PHP/MySQL backend, Perform-X enables managers to assign work, set granular priorities, monitor ongoing completion rates, and dynamically review metrics like *Task Completion Velocity* and *Average Focus Time*—all from a single responsive application.
 ---
+
 ## 🕹️ Features
 Perform-X comes equipped with a comprehensive set of features tailored for modern collaborative work:
 |
