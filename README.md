@@ -127,6 +127,7 @@ Low
  Quick-action inline table buttons allowing users to check off, edit, or delete items seamlessly. 
 |
 ---
+
 ## 🛠️ Technology Stack
 Perform-X uses a solid full-stack structure utilizing proven, high-performance web development technologies:
 ### **Frontend (Client Side)**
